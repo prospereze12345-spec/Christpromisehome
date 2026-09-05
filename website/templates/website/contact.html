@@ -1,0 +1,1110 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+
+    <title>Contact Us | Christ Promise Children's Home</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Get in touch with Christ Promise Children's Home to volunteer, sponsor a programme, raise a safeguarding concern, or ask a question. We reply to every message personally.">
+
+    <meta name="keywords"
+          content="contact Christ Promise Children's Home, volunteer children's home UK, sponsor a child, safeguarding concern, children's charity London">
+
+    <meta name="author"
+          content="Christ Promise Children's Home">
+
+    <meta name="robots"
+          content="index, follow">
+
+    <meta name="theme-color"
+          content="#102a43">
+
+    <meta property="og:type"
+          content="website">
+
+    <meta property="og:title"
+          content="Contact Us | Christ Promise Children's Home">
+
+    <meta property="og:description"
+          content="Volunteer, sponsor a programme, or ask a question - get in touch with Christ Promise Children's Home.">
+
+    <meta property="og:image"
+          content="{% static 'website/img/children.JPG' %}">
+
+    <link href="{% static 'website/img/favicon.ico' %}"
+          rel="icon">
+
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+          rel="stylesheet">
+
+    <link href="{% static 'website/lib/flaticon/font/flaticon.css' %}"
+          rel="stylesheet">
+
+    <link href="{% static 'website/lib/animate/animate.min.css' %}"
+          rel="stylesheet">
+
+    <link href="{% static 'website/lib/owlcarousel/assets/owl.carousel.min.css' %}"
+          rel="stylesheet">
+
+    <link href="{% static 'website/css/style.css' %}"
+          rel="stylesheet">
+
+    <style>
+
+        :root {
+            --cp-blue: #102a43;
+            --cp-blue-light: #243b53;
+            --cp-red: #c53030;
+            --cp-red-dark: #9b2c2c;
+            --cp-white: #ffffff;
+            --cp-light: #f7f9fb;
+            --cp-border: #e4e9ee;
+            --cp-text: #334e68;
+            --cp-muted: #627d98;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            width: 100%;
+            overflow-x: hidden;
+            background: var(--cp-white);
+            color: var(--cp-text);
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        section[id] {
+            scroll-margin-top: 78px;
+        }
+
+        a {
+            transition:
+                color .2s ease,
+                background-color .2s ease,
+                border-color .2s ease;
+        }
+
+        p {
+            line-height: 1.8;
+        }
+
+        section {
+            width: 100%;
+        }
+
+        .container,
+        .container-fluid {
+            width: 100%;
+        }
+
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible,
+        textarea:focus-visible {
+            outline: 3px solid rgba(197, 48, 48, .35);
+            outline-offset: 3px;
+        }
+
+        .section-header {
+            max-width: 760px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-header p {
+            margin-bottom: 8px;
+            color: var(--cp-red);
+            font-weight: 700;
+            letter-spacing: .04em;
+        }
+
+        .section-header h2 {
+            margin-bottom: 20px;
+            color: var(--cp-blue);
+            line-height: 1.25;
+        }
+
+        .btn-custom {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 46px;
+            padding: 11px 22px;
+            border: 1px solid var(--cp-red) !important;
+            border-radius: 3px;
+            background-color: var(--cp-white) !important;
+            color: red !important;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .btn-custom:hover,
+        .btn-custom:focus,
+        .btn-custom:active {
+            border-color: var(--cp-red-dark) !important;
+            background-color: var(--cp-red-dark) !important;
+            color: #ffffff !important;
+        }
+
+        .btn {
+            white-space: normal;
+        }
+
+        .navbar {
+            position: relative;
+            z-index: 1000;
+            background: #ffffff !important;
+            border-bottom: 1px solid var(--cp-border);
+        }
+
+        .navbar.bg-dark,
+        .navbar.navbar-dark {
+            background: #ffffff !important;
+        }
+
+        .navbar-brand {
+            max-width: 350px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -.02em;
+            white-space: normal;
+            color: var(--cp-blue) !important;
+        }
+
+        .navbar-dark .navbar-nav .nav-link,
+        .navbar .navbar-nav .nav-link {
+            padding-left: 14px;
+            padding-right: 14px;
+            color: var(--cp-blue) !important;
+            font-weight: 600;
+        }
+
+        .navbar-dark .navbar-nav .nav-link:hover,
+        .navbar-dark .navbar-nav .nav-link:focus,
+        .navbar-dark .navbar-nav .nav-link.active,
+        .navbar .navbar-nav .nav-link:hover,
+        .navbar .navbar-nav .nav-link:focus,
+        .navbar .navbar-nav .nav-link.active {
+            color: var(--cp-red) !important;
+        }
+
+        .navbar-toggler {
+            padding: .4rem .55rem;
+            border: 1px solid var(--cp-blue);
+            border-radius: 4px;
+        }
+
+        .navbar-toggler-icon {
+            position: relative;
+            display: inline-block;
+            width: 24px;
+            height: 2px;
+            background-color: var(--cp-blue);
+        }
+
+        .navbar-toggler-icon::before,
+        .navbar-toggler-icon::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            width: 24px;
+            height: 2px;
+            background-color: var(--cp-blue);
+        }
+
+        .navbar-toggler-icon::before {
+            top: -7px;
+        }
+
+        .navbar-toggler-icon::after {
+            top: 7px;
+        }
+
+        .contact {
+            padding: 90px 0;
+            background: #ffffff;
+        }
+
+        .contact-img {
+            width: 100%;
+            margin-bottom: 35px;
+            overflow: hidden;
+        }
+
+        .contact-img img {
+            display: block;
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+        }
+
+        .contact-form {
+            max-width: 850px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .contact-form .form-control {
+            min-height: 52px;
+            border: 1px solid var(--cp-border);
+            border-radius: 3px;
+        }
+
+        .contact-form textarea.form-control {
+            min-height: 160px;
+        }
+
+        .contact-form .control-group {
+            margin-bottom: 18px;
+        }
+
+        .contact-form .btn {
+            min-height: 48px;
+        }
+
+        .btn-cta-inverse {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 11px 26px;
+            border: 1px solid var(--cp-blue);
+            border-radius: 3px;
+            background-color: var(--cp-blue);
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .btn-cta-inverse:hover,
+        .btn-cta-inverse:focus {
+            border-color: var(--cp-red-dark);
+            background-color: var(--cp-red-dark);
+            color: #ffffff;
+        }
+
+        .footer {
+            padding-top: 70px;
+            background: var(--cp-blue);
+        }
+
+        .footer h2 {
+            color: #ffffff;
+            line-height: 1.3;
+        }
+
+        .footer p,
+        .footer a {
+            color: rgba(255,255,255,.82);
+        }
+
+        .footer a:hover {
+            color: #ffffff;
+        }
+
+        .footer-link a {
+            display: block;
+            margin-bottom: 11px;
+            padding: 2px 0;
+        }
+
+        .footer-brand {
+            color: #ffffff !important;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .footer-address {
+            margin-top: 20px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(255,255,255,.12);
+        }
+
+        .footer-address strong {
+            display: block;
+            margin-bottom: 6px;
+            color: #ffffff;
+        }
+
+        .copyright {
+            margin-top: 40px;
+            padding-top: 25px;
+            padding-bottom: 25px;
+            border-top: 1px solid rgba(255,255,255,.12);
+        }
+
+        .copyright p {
+            margin-bottom: 0;
+        }
+
+        .back-to-top {
+            z-index: 9999;
+            width: 46px;
+            height: 46px;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .site-logo {
+            height: 95px;
+            width: auto;
+            max-width: 280px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .brand-mobile-text {
+            display: inline-block;
+            font-size: 19px;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-left: 12px;
+            max-width: 260px;
+            color: var(--cp-blue);
+            white-space: normal;
+            vertical-align: middle;
+        }
+
+        @media (max-width: 991.98px) {
+            .site-logo {
+                height: 48px;
+                max-width: 145px;
+            }
+
+            .brand-mobile-text {
+                display: inline-block;
+                font-size: 15px;
+                font-weight: 600;
+                line-height: 1.1;
+                margin-left: 8px;
+                max-width: 145px;
+                white-space: normal;
+            }
+        }
+
+        @media (max-width: 1199.98px) {
+            .navbar-brand {
+                max-width: 300px;
+                font-size: 1.25rem;
+            }
+
+            .navbar-dark .navbar-nav .nav-link,
+            .navbar .navbar-nav .nav-link {
+                padding-right: 9px;
+                padding-left: 9px;
+                font-size: .92rem;
+            }
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar {
+                padding: .75rem 0;
+            }
+
+            .navbar-brand {
+                max-width: 280px;
+                font-size: 1.18rem;
+            }
+
+            .navbar-nav {
+                padding-top: 12px;
+                padding-bottom: 12px;
+            }
+
+            .navbar-dark .navbar-nav .nav-link,
+            .navbar .navbar-nav .nav-link {
+                padding: 11px 4px;
+            }
+
+            .contact,
+            .footer {
+                padding-top: 60px;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            body {
+                font-size: 15px;
+            }
+
+            .container {
+                padding-right: 18px;
+                padding-left: 18px;
+            }
+
+            .navbar-brand {
+                max-width: calc(100% - 65px);
+                font-size: 1.05rem;
+                line-height: 1.25;
+            }
+
+            .navbar-toggler {
+                margin-left: 10px;
+            }
+
+            .navbar-collapse {
+                max-height: calc(100vh - 75px);
+                overflow-y: auto;
+            }
+
+            .navbar-nav {
+                width: 100%;
+            }
+
+            .navbar-dark .navbar-nav .nav-link,
+            .navbar .navbar-nav .nav-link {
+                padding: 12px 4px;
+                border-bottom: 1px solid var(--cp-border);
+            }
+
+            .section-header h2 {
+                font-size: 1.8rem;
+                line-height: 1.3;
+            }
+
+            .contact {
+                padding: 65px 0;
+            }
+
+            .contact-img img {
+                height: 280px;
+            }
+
+            .contact-form .form-control {
+                min-height: 50px;
+            }
+
+            .contact-form textarea.form-control {
+                min-height: 140px;
+            }
+
+            .contact-form .btn {
+                width: 100%;
+                min-height: 48px;
+            }
+
+            .footer {
+                padding-top: 55px;
+            }
+
+            .footer-contact,
+            .footer-link {
+                margin-bottom: 35px;
+            }
+
+            .footer h2 {
+                font-size: 1.3rem;
+            }
+
+            .footer p,
+            .footer a {
+                font-size: .94rem;
+            }
+
+            .footer-link a {
+                margin-bottom: 5px;
+                padding: 5px 0;
+            }
+
+            .footer-address {
+                margin-top: 18px;
+                padding-top: 16px;
+            }
+
+            .copyright {
+                margin-top: 10px;
+                padding-top: 25px;
+                padding-bottom: 25px;
+                text-align: center;
+            }
+
+            .copyright .col-md-6 {
+                margin-bottom: 10px;
+            }
+
+            .copyright p {
+                font-size: .86rem;
+            }
+
+            .back-to-top {
+                right: 15px !important;
+                bottom: 15px !important;
+                width: 44px;
+                height: 44px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding-right: 15px;
+                padding-left: 15px;
+            }
+
+            .section-header h2 {
+                font-size: 1.62rem;
+            }
+
+            .section-header p {
+                font-size: .78rem;
+            }
+
+            .contact-img img {
+                height: 230px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .navbar-brand {
+                font-size: .95rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.48rem;
+            }
+        }
+
+        /* ---- Page banner ---- */
+        .page-banner {
+            padding: 56px 0 50px;
+            background: var(--cp-blue);
+        }
+
+        .page-banner .crumb {
+            margin-bottom: 10px;
+            color: rgba(255,255,255,.65);
+            font-size: .9rem;
+            font-weight: 600;
+        }
+
+        .page-banner .crumb a {
+            color: rgba(255,255,255,.85);
+        }
+
+        .page-banner .crumb a:hover {
+            color: #ffffff;
+        }
+
+        .page-banner h1 {
+            margin-bottom: 14px;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: clamp(1.9rem, 3.6vw, 2.7rem);
+        }
+
+        .page-banner p {
+            max-width: 56ch;
+            margin-bottom: 0;
+            color: rgba(255,255,255,.78);
+        }
+
+        .contact-routes {
+            padding: 55px 0 0;
+            background: #ffffff;
+        }
+
+        .contact-routes .route-item {
+            padding: 22px 4px;
+            border-top: 1px solid var(--cp-border);
+        }
+
+        .contact-routes .row > div:last-child .route-item {
+            border-bottom: 1px solid var(--cp-border);
+        }
+
+        .contact-routes h3 {
+            margin-bottom: 6px;
+            color: var(--cp-blue);
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+
+        .contact-routes p {
+            margin-bottom: 0;
+            color: var(--cp-muted);
+            font-size: .92rem;
+        }
+
+        @media (max-width: 767.98px) {
+            .page-banner {
+                padding: 44px 0 40px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark"
+         aria-label="Main navigation">
+
+        <div class="container-fluid">
+
+            <a href="{% url 'home' %}"
+   class="navbar-brand d-flex align-items-center"
+   aria-label="Christ Promise Children's Home home">
+
+    <img src="{% static 'website/img/PHOTO-2026-09-03-12-55-43.png' %}"
+         alt="Christ Promise Children's Home"
+         class="site-logo">
+
+    <span class="brand-mobile-text">
+        Christ Promise Children's
+    </span>
+
+</a>
+
+            <button type="button"
+                    class="navbar-toggler"
+                    data-toggle="collapse"
+                    data-target="#navbarCollapse"
+                    aria-controls="navbarCollapse"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-between"
+                 id="navbarCollapse">
+
+                <div class="navbar-nav ml-auto">
+
+                    <a href="{% url 'home' %}"
+                       class="nav-item nav-link">
+                        Home
+                    </a>
+
+                    <a href="{% url 'about' %}" class="nav-item nav-link">
+                        About Us
+                    </a>
+
+                    <a href="{% url 'programmes' %}"
+                       class="nav-item nav-link">
+                        Our Programmes
+                    </a>
+
+                    <a href="{% url 'donate' %}"
+                       class="nav-item nav-link">
+                        Donate
+                    </a>
+
+                    <a href="{% url 'gallery' %}"
+                       class="nav-item nav-link">
+                        Gallery
+                    </a>
+
+                    <a href="{% url 'contact' %}"
+                       class="nav-item nav-link active">
+                        Contact Us
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </nav>
+<!-- ============================================================
+     PAGE BANNER
+============================================================ -->
+
+<section class="page-banner">
+
+    <div class="container">
+
+        <p class="crumb">
+            <a href="{% url 'home' %}">Home</a> / Contact Us
+        </p>
+
+        <h1>
+            Contact Us
+        </h1>
+
+        <p>
+            Whether you would like to volunteer, sponsor a programme, raise a
+            safeguarding concern, or simply ask a question, someone from the
+            Home will read your message personally.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     QUICK ROUTES
+============================================================ -->
+
+<section class="contact-routes">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="route-item">
+                    <h3>General Enquiries</h3>
+                    <p>Questions about the Home, our programmes or how we're run.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="route-item">
+                    <h3>Volunteering &amp; Support</h3>
+                    <p>Offer your time, sponsor a programme, or ask about giving.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="route-item">
+                    <h3>Safeguarding Concerns</h3>
+                    <p>Message us directly, or see our published safeguarding policy.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     CONTACT FORM
+============================================================ -->
+
+<section class="contact"
+                 id="contact">
+
+            <div class="container">
+
+                <div class="section-header text-center">
+
+                    <p>
+                        Get In Touch
+                    </p>
+
+                    <h2>
+                        We would love to hear from you
+                    </h2>
+
+                </div>
+
+                <div class="contact-img">
+
+                    <img src="{% static 'website/img/contact.jpg' %}"
+                         alt="Contact Christ Promise Children's Home"
+                         loading="lazy"
+                         decoding="async">
+
+                </div>
+
+                <div class="contact-form">
+
+                    <div id="success"></div>
+
+                    <form name="sentMessage"
+                          id="contactForm"
+                          novalidate="novalidate">
+
+                        <div class="control-group">
+
+                            <input type="text"
+                                   class="form-control"
+                                   id="name"
+                                   placeholder="Your Name"
+                                   required="required"
+                                   data-validation-required-message="Please enter your name">
+
+                            <p class="help-block text-danger"></p>
+
+                        </div>
+
+                        <div class="control-group">
+
+                            <input type="email"
+                                   class="form-control"
+                                   id="email"
+                                   placeholder="Your Email"
+                                   required="required"
+                                   data-validation-required-message="Please enter your email">
+
+                            <p class="help-block text-danger"></p>
+
+                        </div>
+
+                        <div class="control-group">
+
+                            <input type="text"
+                                   class="form-control"
+                                   id="subject"
+                                   placeholder="Subject"
+                                   required="required"
+                                   data-validation-required-message="Please enter a subject">
+
+                            <p class="help-block text-danger"></p>
+
+                        </div>
+
+                        <div class="control-group">
+
+                            <textarea class="form-control"
+                                      id="message"
+                                      placeholder="Message"
+                                      required="required"
+                                      data-validation-required-message="Please enter your message"></textarea>
+
+                            <p class="help-block text-danger"></p>
+
+                        </div>
+
+                        <div>
+
+<button class="btn btn-cta-inverse" type="submit" id="sendMessageButton">
+    Send Message
+</button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </section>
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="row">
+
+
+            <!-- HOME INFORMATION -->
+
+            <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
+
+                <div class="footer-contact">
+
+                    <h2>
+                        Christ Promise Children's Home
+                    </h2>
+
+                    <p>
+                        A Christ-centred home established in 2014,
+                        committed to raising children with love, faith
+                        and purpose.
+                    </p>
+
+                    <p>
+                        We believe every child deserves to be loved,
+                        protected, educated and given the opportunity
+                        to build a hopeful future.
+                    </p>
+
+                    <div class="footer-address">
+
+                        <strong>
+                            Our Address
+                        </strong>
+
+                        <p class="mb-0">
+                            20 Crescent Road,<br>
+                            London E18 1HB,<br>
+                            UK
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- EXPLORE -->
+
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+
+                <div class="footer-link">
+
+                    <h2>
+                        Explore
+                    </h2>
+
+                    <a href="{% url 'home' %}">
+                        Home
+                    </a>
+
+                    <a href="{% url 'about' %}">
+                        About Us
+                    </a>
+
+                    <a href="{% url 'programmes' %}">
+                        Our Programmes
+                    </a>
+
+                    <a href="{% url 'home' %}#volunteer">
+                        Get Involved
+                    </a>
+
+                    <a href="{% url 'home' %}#children">
+                        Our Children
+                    </a>
+
+                    <a href="{% url 'gallery' %}">
+                        Gallery
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- INFORMATION -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="footer-link">
+
+                    <h2>
+                        Information
+                    </h2>
+
+                    
+
+                    <a href="{% url 'home' %}#faq">
+                        Frequently Asked Questions
+                    </a>
+
+                    
+
+                    <a href="{% url 'contact' %}">
+                        Contact Us
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- COPYRIGHT -->
+
+    <div class="container copyright">
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <p>
+                    &copy; 2026
+                    <a href="{% url 'home' %}">
+                        Christ Promise Children's Home
+                    </a>.
+                    All Rights Reserved.
+                </p>
+
+            </div>
+
+
+            <div class="col-md-6">
+
+                <p>
+                    Developed by
+                    <a href="#">
+                        Somtohgist
+                    </a>
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- ============================================================
+     BACK TO TOP
+============================================================ -->
+
+<a
+    href="#"
+    class="back-to-top"
+    aria-label="Back to top"
+>
+    <i class="fa fa-chevron-up"></i>
+</a>
+
+
+<!-- ============================================================
+     PRE LOADER
+============================================================ -->
+
+<div
+    id="loader"
+    class="show"
+>
+    <div class="loader"></div>
+</div>
+
+
+<!-- ============================================================
+     JAVASCRIPT
+============================================================ -->
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
+<script src="{% static 'website/lib/easing/easing.min.js' %}"></script>
+
+<script src="{% static 'website/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+<script src="{% static 'website/lib/waypoints/waypoints.min.js' %}"></script>
+
+<script src="{% static 'website/lib/counterup/counterup.min.js' %}"></script>
+
+<script src="{% static 'website/lib/parallax/parallax.min.js' %}"></script>
+
+<script src="{% static 'website/mail/jqBootstrapValidation.min.js' %}"></script>
+<script src="{% static 'website/mail/contact.js' %}"></script>
+
+<script src="{% static 'website/js/main.js' %}"></script>
+
+</body>
+
+</html>

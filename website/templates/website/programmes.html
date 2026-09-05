@@ -1,0 +1,1968 @@
+﻿{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+
+    <title>Our Programmes | Christ Promise Children's Home</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Explore the six programmes at Christ Promise Children's Home: education, health, life skills, recreation, safeguarding and Christian values, and how you can support them.">
+
+    <meta name="keywords"
+          content="Christ Promise Children's Home programmes, children's home education, child health and wellbeing, child safeguarding, life skills for children, Christian children's home, sponsor a child UK">
+
+    <meta name="author"
+          content="Christ Promise Children's Home">
+
+    <meta name="robots"
+          content="index, follow">
+
+    <meta name="theme-color"
+          content="#102a43">
+
+    <meta property="og:type"
+          content="website">
+
+    <meta property="og:title"
+          content="Our Programmes | Christ Promise Children's Home">
+
+    <meta property="og:description"
+          content="Education, health, life skills, recreation, safeguarding and Christian values - six programmes that shape daily life at Christ Promise Children's Home.">
+
+    <meta property="og:image"
+          content="{% static 'website/img/children.JPG' %}">
+
+    <link href="{% static 'website/img/favicon.ico' %}"
+          rel="icon">
+
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+          rel="stylesheet">
+
+    <link href="{% static 'website/lib/flaticon/font/flaticon.css' %}"
+          rel="stylesheet">
+
+    <link href="{% static 'website/lib/animate/animate.min.css' %}"
+          rel="stylesheet">
+
+    <link href="{% static 'website/lib/owlcarousel/assets/owl.carousel.min.css' %}"
+          rel="stylesheet">
+
+    <link href="{% static 'website/css/style.css' %}"
+          rel="stylesheet">
+
+    <style>
+
+        :root {
+            --cp-blue: #102a43;
+            --cp-blue-light: #243b53;
+            --cp-red: #c53030;
+            --cp-red-dark: #9b2c2c;
+            --cp-white: #ffffff;
+            --cp-light: #f7f9fb;
+            --cp-border: #e4e9ee;
+            --cp-text: #334e68;
+            --cp-muted: #627d98;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            width: 100%;
+            overflow-x: hidden;
+            background: var(--cp-white);
+            color: var(--cp-text);
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        section[id] {
+            scroll-margin-top: 78px;
+        }
+
+        a {
+            transition:
+                color .2s ease,
+                background-color .2s ease,
+                border-color .2s ease;
+        }
+
+        p {
+            line-height: 1.8;
+        }
+
+        section {
+            width: 100%;
+        }
+
+        .container,
+        .container-fluid {
+            width: 100%;
+        }
+
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible,
+        textarea:focus-visible {
+            outline: 3px solid rgba(197, 48, 48, .35);
+            outline-offset: 3px;
+        }
+
+        .section-header {
+            max-width: 760px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-header p {
+            margin-bottom: 8px;
+            color: var(--cp-red);
+            font-weight: 700;
+            letter-spacing: .04em;
+        }
+
+        .section-header h2 {
+            margin-bottom: 20px;
+            color: var(--cp-blue);
+            line-height: 1.25;
+        }
+
+        .btn-custom {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 46px;
+            padding: 11px 22px;
+            border: 1px solid var(--cp-red) !important;
+            border-radius: 3px;
+            background-color: var(--cp-white) !important;
+            color: red !important;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .btn-custom:hover,
+        .btn-custom:focus,
+        .btn-custom:active {
+            border-color: var(--cp-red-dark) !important;
+            background-color: var(--cp-red-dark) !important;
+            color: #ffffff !important;
+        }
+
+        .btn {
+            white-space: normal;
+        }
+
+        .navbar {
+            position: relative;
+            z-index: 1000;
+            background: #ffffff !important;
+            border-bottom: 1px solid var(--cp-border);
+        }
+
+        .navbar.bg-dark,
+        .navbar.navbar-dark {
+            background: #ffffff !important;
+        }
+
+        .navbar-brand {
+            max-width: 350px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -.02em;
+            white-space: normal;
+            color: var(--cp-blue) !important;
+        }
+
+        .navbar-dark .navbar-nav .nav-link,
+        .navbar .navbar-nav .nav-link {
+            padding-left: 14px;
+            padding-right: 14px;
+            color: var(--cp-blue) !important;
+            font-weight: 600;
+        }
+
+        .navbar-dark .navbar-nav .nav-link:hover,
+        .navbar-dark .navbar-nav .nav-link:focus,
+        .navbar-dark .navbar-nav .nav-link.active,
+        .navbar .navbar-nav .nav-link:hover,
+        .navbar .navbar-nav .nav-link:focus,
+        .navbar .navbar-nav .nav-link.active {
+            color: var(--cp-red) !important;
+        }
+
+        .navbar-toggler {
+            padding: .4rem .55rem;
+            border: 1px solid var(--cp-blue);
+            border-radius: 4px;
+        }
+
+        .navbar-toggler-icon {
+            position: relative;
+            display: inline-block;
+            width: 24px;
+            height: 2px;
+            background-color: var(--cp-blue);
+        }
+
+        .navbar-toggler-icon::before,
+        .navbar-toggler-icon::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            width: 24px;
+            height: 2px;
+            background-color: var(--cp-blue);
+        }
+
+        .navbar-toggler-icon::before {
+            top: -7px;
+        }
+
+        .navbar-toggler-icon::after {
+            top: 7px;
+        }
+
+        .contact {
+            padding: 90px 0;
+            background: #ffffff;
+        }
+
+        .contact-img {
+            width: 100%;
+            margin-bottom: 35px;
+            overflow: hidden;
+        }
+
+        .contact-img img {
+            display: block;
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+        }
+
+        .contact-form {
+            max-width: 850px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .contact-form .form-control {
+            min-height: 52px;
+            border: 1px solid var(--cp-border);
+            border-radius: 3px;
+        }
+
+        .contact-form textarea.form-control {
+            min-height: 160px;
+        }
+
+        .contact-form .control-group {
+            margin-bottom: 18px;
+        }
+
+        .contact-form .btn {
+            min-height: 48px;
+        }
+
+        .btn-cta-inverse {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 11px 26px;
+            border: 1px solid var(--cp-blue);
+            border-radius: 3px;
+            background-color: var(--cp-blue);
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .btn-cta-inverse:hover,
+        .btn-cta-inverse:focus {
+            border-color: var(--cp-red-dark);
+            background-color: var(--cp-red-dark);
+            color: #ffffff;
+        }
+
+        .footer {
+            padding-top: 70px;
+            background: var(--cp-blue);
+        }
+
+        .footer h2 {
+            color: #ffffff;
+            line-height: 1.3;
+        }
+
+        .footer p,
+        .footer a {
+            color: rgba(255,255,255,.82);
+        }
+
+        .footer a:hover {
+            color: #ffffff;
+        }
+
+        .footer-link a {
+            display: block;
+            margin-bottom: 11px;
+            padding: 2px 0;
+        }
+
+        .footer-brand {
+            color: #ffffff !important;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .footer-address {
+            margin-top: 20px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(255,255,255,.12);
+        }
+
+        .footer-address strong {
+            display: block;
+            margin-bottom: 6px;
+            color: #ffffff;
+        }
+
+        .copyright {
+            margin-top: 40px;
+            padding-top: 25px;
+            padding-bottom: 25px;
+            border-top: 1px solid rgba(255,255,255,.12);
+        }
+
+        .copyright p {
+            margin-bottom: 0;
+        }
+
+        .back-to-top {
+            z-index: 9999;
+            width: 46px;
+            height: 46px;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .site-logo {
+            height: 95px;
+            width: auto;
+            max-width: 280px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .brand-mobile-text {
+            display: inline-block;
+            font-size: 19px;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-left: 12px;
+            max-width: 260px;
+            color: var(--cp-blue);
+            white-space: normal;
+            vertical-align: middle;
+        }
+
+        @media (max-width: 991.98px) {
+            .site-logo {
+                height: 48px;
+                max-width: 145px;
+            }
+
+            .brand-mobile-text {
+                display: inline-block;
+                font-size: 15px;
+                font-weight: 600;
+                line-height: 1.1;
+                margin-left: 8px;
+                max-width: 145px;
+                white-space: normal;
+            }
+        }
+
+        @media (max-width: 1199.98px) {
+            .navbar-brand {
+                max-width: 300px;
+                font-size: 1.25rem;
+            }
+
+            .navbar-dark .navbar-nav .nav-link,
+            .navbar .navbar-nav .nav-link {
+                padding-right: 9px;
+                padding-left: 9px;
+                font-size: .92rem;
+            }
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar {
+                padding: .75rem 0;
+            }
+
+            .navbar-brand {
+                max-width: 280px;
+                font-size: 1.18rem;
+            }
+
+            .navbar-nav {
+                padding-top: 12px;
+                padding-bottom: 12px;
+            }
+
+            .navbar-dark .navbar-nav .nav-link,
+            .navbar .navbar-nav .nav-link {
+                padding: 11px 4px;
+            }
+
+            .contact,
+            .footer {
+                padding-top: 60px;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            body {
+                font-size: 15px;
+            }
+
+            .container {
+                padding-right: 18px;
+                padding-left: 18px;
+            }
+
+            .navbar-brand {
+                max-width: calc(100% - 65px);
+                font-size: 1.05rem;
+                line-height: 1.25;
+            }
+
+            .navbar-toggler {
+                margin-left: 10px;
+            }
+
+            .navbar-collapse {
+                max-height: calc(100vh - 75px);
+                overflow-y: auto;
+            }
+
+            .navbar-nav {
+                width: 100%;
+            }
+
+            .navbar-dark .navbar-nav .nav-link,
+            .navbar .navbar-nav .nav-link {
+                padding: 12px 4px;
+                border-bottom: 1px solid var(--cp-border);
+            }
+
+            .section-header h2 {
+                font-size: 1.8rem;
+                line-height: 1.3;
+            }
+
+            .contact {
+                padding: 65px 0;
+            }
+
+            .contact-img img {
+                height: 280px;
+            }
+
+            .contact-form .form-control {
+                min-height: 50px;
+            }
+
+            .contact-form textarea.form-control {
+                min-height: 140px;
+            }
+
+            .contact-form .btn {
+                width: 100%;
+                min-height: 48px;
+            }
+
+            .footer {
+                padding-top: 55px;
+            }
+
+            .footer-contact,
+            .footer-link {
+                margin-bottom: 35px;
+            }
+
+            .footer h2 {
+                font-size: 1.3rem;
+            }
+
+            .footer p,
+            .footer a {
+                font-size: .94rem;
+            }
+
+            .footer-link a {
+                margin-bottom: 5px;
+                padding: 5px 0;
+            }
+
+            .footer-address {
+                margin-top: 18px;
+                padding-top: 16px;
+            }
+
+            .copyright {
+                margin-top: 10px;
+                padding-top: 25px;
+                padding-bottom: 25px;
+                text-align: center;
+            }
+
+            .copyright .col-md-6 {
+                margin-bottom: 10px;
+            }
+
+            .copyright p {
+                font-size: .86rem;
+            }
+
+            .back-to-top {
+                right: 15px !important;
+                bottom: 15px !important;
+                width: 44px;
+                height: 44px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding-right: 15px;
+                padding-left: 15px;
+            }
+
+            .section-header h2 {
+                font-size: 1.62rem;
+            }
+
+            .section-header p {
+                font-size: .78rem;
+            }
+
+            .contact-img img {
+                height: 230px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .navbar-brand {
+                font-size: .95rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.48rem;
+            }
+        }
+
+        /* ---- Page banner ---- */
+        .page-banner {
+            padding: 56px 0 50px;
+            background: var(--cp-blue);
+        }
+
+        .page-banner .crumb {
+            margin-bottom: 10px;
+            color: rgba(255,255,255,.65);
+            font-size: .9rem;
+            font-weight: 600;
+        }
+
+        .page-banner .crumb a {
+            color: rgba(255,255,255,.85);
+        }
+
+        .page-banner .crumb a:hover {
+            color: #ffffff;
+        }
+
+        .page-banner h1 {
+            margin-bottom: 0;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: clamp(1.9rem, 3.6vw, 2.7rem);
+        }
+
+        /* ---- Index hero: the programme directory ---- */
+        .programme-hero {
+            padding: 76px 0 70px;
+            background: #ffffff;
+            border-bottom: 1px solid var(--cp-border);
+        }
+
+        .programme-hero .lede h2 {
+            max-width: 15ch;
+            margin-bottom: 22px;
+            color: var(--cp-blue);
+            font-weight: 700;
+            font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+            line-height: 1.2;
+        }
+
+        .programme-hero .lede p {
+            max-width: 46ch;
+            margin-bottom: 30px;
+            color: var(--cp-muted);
+        }
+
+        .programme-hero .lede-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .programme-index {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            border-top: 1px solid var(--cp-border);
+        }
+
+        .programme-index li {
+            border-bottom: 1px solid var(--cp-border);
+        }
+
+        .programme-index a {
+            display: flex;
+            align-items: baseline;
+            gap: 18px;
+            padding: 17px 4px;
+            color: var(--cp-blue);
+            text-decoration: none;
+        }
+
+        .programme-index a:hover,
+        .programme-index a:focus {
+            color: var(--cp-red);
+        }
+
+        .programme-index .idx-num {
+            flex: 0 0 auto;
+            width: 28px;
+            color: var(--cp-muted);
+            font-weight: 700;
+            font-size: .95rem;
+        }
+
+        .programme-index .idx-body {
+            flex: 1 1 auto;
+        }
+
+        .programme-index .idx-name {
+            display: block;
+            font-weight: 700;
+            font-size: 1.08rem;
+        }
+
+        .programme-index .idx-desc {
+            display: block;
+            margin-top: 3px;
+            color: var(--cp-muted);
+            font-size: .9rem;
+            font-weight: 500;
+        }
+
+        .programme-index .idx-arrow {
+            flex: 0 0 auto;
+            font-size: 1.2rem;
+            color: var(--cp-border);
+        }
+
+        .programme-index a:hover .idx-arrow,
+        .programme-index a:focus .idx-arrow {
+            color: var(--cp-red);
+        }
+
+        /* ---- Programme rows ---- */
+        .programme-row {
+            padding: 72px 0;
+        }
+
+        .programme-row.bg-light-band {
+            background: var(--cp-light);
+        }
+
+        .programme-row.bg-dark-band {
+            background: var(--cp-blue);
+        }
+
+        .programme-row .num-col {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .programme-mark {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 76px;
+            height: 76px;
+            margin-bottom: 18px;
+            border: 1px solid var(--cp-border);
+            border-radius: 50%;
+            background: #ffffff;
+            font-size: 1.9rem;
+            color: var(--cp-red);
+        }
+
+        .programme-row.bg-dark-band .programme-mark {
+            border-color: rgba(255,255,255,.25);
+            background: rgba(255,255,255,.06);
+            color: #ffffff;
+        }
+
+        .programme-row .num-index {
+            color: var(--cp-muted);
+            font-weight: 700;
+            font-size: .95rem;
+            letter-spacing: .02em;
+        }
+
+        .programme-row.bg-dark-band .num-index {
+            color: rgba(255,255,255,.55);
+        }
+
+        .programme-row h3 {
+            margin-bottom: 16px;
+            color: var(--cp-blue);
+            font-weight: 700;
+            font-size: 1.6rem;
+            line-height: 1.3;
+        }
+
+        .programme-row.bg-dark-band h3 {
+            color: #ffffff;
+        }
+
+        .programme-row p {
+            color: var(--cp-text);
+        }
+
+        .programme-row.bg-dark-band p {
+            color: rgba(255,255,255,.82);
+        }
+
+        .fact-chip {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 6px;
+            margin-bottom: 22px;
+            padding: 9px 16px;
+            border: 1px solid var(--cp-border);
+            border-radius: 3px;
+            background: #ffffff;
+            color: var(--cp-blue);
+            font-weight: 600;
+            font-size: .88rem;
+        }
+
+        .programme-row.bg-dark-band .fact-chip {
+            border-color: rgba(255,255,255,.25);
+            background: rgba(255,255,255,.06);
+            color: #ffffff;
+        }
+
+        .programme-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--cp-red);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .programme-link:hover,
+        .programme-link:focus {
+            color: var(--cp-red-dark);
+            text-decoration: none;
+        }
+
+        .programme-row.bg-dark-band .programme-link {
+            color: #ffffff;
+        }
+
+        .programme-row.bg-dark-band .programme-link:hover,
+        .programme-row.bg-dark-band .programme-link:focus {
+            color: rgba(255,255,255,.75);
+        }
+
+        /* ---- Programme FAQ ---- */
+        .programme-faq {
+            padding: 80px 0;
+            background: var(--cp-light);
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 36px 48px;
+            max-width: 980px;
+            margin: 40px auto 0;
+        }
+
+        .faq-item h3 {
+            margin-bottom: 10px;
+            color: var(--cp-blue);
+            font-weight: 700;
+            font-size: 1.08rem;
+        }
+
+        .faq-item p {
+            margin-bottom: 0;
+            color: var(--cp-text);
+            font-size: .95rem;
+        }
+
+        .faq-item a {
+            color: var(--cp-red);
+            font-weight: 600;
+        }
+
+        .faq-item a:hover {
+            color: var(--cp-red-dark);
+        }
+
+        /* ---- Keep exploring ---- */
+        .explore-more {
+            padding: 70px 0 80px;
+            background: #ffffff;
+        }
+
+        .explore-link {
+            display: block;
+            height: 100%;
+            padding: 22px 20px;
+            border: 1px solid var(--cp-border);
+            border-radius: 3px;
+            text-decoration: none;
+        }
+
+        .explore-link:hover,
+        .explore-link:focus {
+            border-color: var(--cp-red);
+            text-decoration: none;
+        }
+
+        .explore-link span {
+            display: block;
+            margin-bottom: 6px;
+            color: var(--cp-blue);
+            font-weight: 700;
+        }
+
+        .explore-link:hover span,
+        .explore-link:focus span {
+            color: var(--cp-red);
+        }
+
+        .explore-link small {
+            display: block;
+            color: var(--cp-muted);
+            font-size: .84rem;
+            line-height: 1.5;
+        }
+
+        /* ---- Closing CTA band ---- */
+        .cta-band {
+            padding: 80px 0;
+            background: var(--cp-blue-light);
+        }
+
+        .cta-band .cta-wrap {
+            max-width: 760px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .cta-band h2 {
+            margin-bottom: 16px;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .cta-band p {
+            margin-bottom: 28px;
+            color: rgba(255,255,255,.82);
+        }
+
+        .cta-band .cta-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .btn-white-outline {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 11px 24px;
+            border: 1px solid rgba(255,255,255,.5);
+            border-radius: 3px;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .btn-white-outline:hover,
+        .btn-white-outline:focus {
+            border-color: #ffffff;
+            background: rgba(255,255,255,.08);
+            color: #ffffff;
+        }
+
+        @media (max-width: 991.98px) {
+            .faq-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .programme-hero {
+                padding: 60px 0;
+            }
+
+            .programme-index {
+                margin-top: 40px;
+            }
+
+            .programme-row {
+                padding: 55px 0;
+            }
+
+            .programme-row .num-col {
+                flex-direction: row;
+                align-items: center;
+                gap: 14px;
+                margin-bottom: 22px;
+            }
+
+            .programme-mark {
+                margin-bottom: 0;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .page-banner {
+                padding: 44px 0 40px;
+            }
+
+            .programme-index a {
+                padding: 15px 2px;
+            }
+
+            .programme-index .idx-name {
+                font-size: 1rem;
+            }
+
+            .cta-band {
+                padding: 60px 0;
+            }
+
+            .cta-band .cta-actions {
+                width: 100%;
+            }
+
+            .cta-band .cta-actions .btn,
+            .cta-band .cta-actions a {
+                width: 100%;
+            }
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Programmes at Christ Promise Children's Home",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Education & Development", "url": "{% url 'programmes' %}#education"},
+            {"@type": "ListItem", "position": 2, "name": "Health & Wellbeing", "url": "{% url 'programmes' %}#health"},
+            {"@type": "ListItem", "position": 3, "name": "Life Skills", "url": "{% url 'programmes' %}#life-skills"},
+            {"@type": "ListItem", "position": 4, "name": "Recreation & Activities", "url": "{% url 'programmes' %}#recreation"},
+            {"@type": "ListItem", "position": 5, "name": "Child Safeguarding", "url": "{% url 'programmes' %}#safeguarding"},
+            {"@type": "ListItem", "position": 6, "name": "Christian Values", "url": "{% url 'programmes' %}#christian-values"}
+        ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How is each programme funded?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Every programme is funded through a mix of individual sponsorship, church partnerships and one-off donations, and supporters can give towards a specific programme rather than a general fund."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I sponsor one child specifically?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, sponsorship can be directed towards a specific area of a child's care, such as schooling, health needs or a yearly wardrobe, or towards the Home more generally."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do you accept volunteers, and what would I be doing?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Volunteers help with homework support, life skills mentoring and Saturday activities, and go through the same background checks and safeguarding training as staff."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What age are the children in your care?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Children come to the Home at different ages and stay until they are ready to live independently, with life skills and budgeting introduced gradually from around age ten."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do you handle a safeguarding concern?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Every concern is recorded, assessed and escalated following our written safeguarding policy, and concerns can be raised through our contact page."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is Christ Promise a registered UK charity?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Christ Promise Children's Home is based in London and has operated as a Christ-centred children's home since 2014."
+                }
+            }
+        ]
+    }
+    </script>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark"
+         aria-label="Main navigation">
+
+        <div class="container-fluid">
+
+            <a href="{% url 'home' %}"
+   class="navbar-brand d-flex align-items-center"
+   aria-label="Christ Promise Children's Home home">
+
+    <img src="{% static 'website/img/PHOTO-2026-09-03-12-55-43.png' %}"
+         alt="Christ Promise Children's Home"
+         class="site-logo">
+
+    <span class="brand-mobile-text">
+        Christ Promise Children's
+    </span>
+
+</a>
+
+            <button type="button"
+                    class="navbar-toggler"
+                    data-toggle="collapse"
+                    data-target="#navbarCollapse"
+                    aria-controls="navbarCollapse"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-between"
+                 id="navbarCollapse">
+
+                <div class="navbar-nav ml-auto">
+
+                    <a href="{% url 'home' %}"
+                       class="nav-item nav-link">
+                        Home
+                    </a>
+
+                    <a href="{% url 'about' %}" class="nav-item nav-link">
+                        About Us
+                    </a>
+
+                    <a href="{% url 'programmes' %}"
+                       class="nav-item nav-link active">
+                        Our Programmes
+                    </a>
+
+                    <a href="{% url 'donate' %}"
+                       class="nav-item nav-link">
+                        Donate
+                    </a>
+
+                    <a href="{% url 'gallery' %}"
+                       class="nav-item nav-link">
+                        Gallery
+                    </a>
+
+                    <a href="{% url 'contact' %}"
+                       class="nav-item nav-link">
+                        Contact Us
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </nav>
+<!-- ============================================================
+     PAGE BANNER
+============================================================ -->
+
+<section class="page-banner">
+
+    <div class="container">
+
+        <p class="crumb">
+            <a href="{% url 'home' %}">Home</a> / Our Programmes
+        </p>
+
+        <h1>
+            Our Programmes
+        </h1>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     PROGRAMME HERO / INDEX
+============================================================ -->
+
+<section class="programme-hero">
+
+    <div class="container">
+
+        <div class="row align-items-start">
+
+            <div class="col-lg-5 lede">
+
+                <h2>
+                    Six ways we care for a child, from morning prayers to homework club
+                </h2>
+
+                <p>
+                    This is what a programme actually looks like day to day at Christ
+                    Promise &mdash; the routines, checks and small decisions that make up
+                    a childhood here, not slogans about what we hope to achieve.
+                </p>
+
+                <p>
+                    Christ Promise Children's Home has run these six programmes since
+                    2014: schooling and homework support, health and wellbeing, life
+                    skills for independence, recreation, child safeguarding, and
+                    Christian teaching. Each one is funded and staffed separately, so
+                    a supporter can choose exactly what they want to put their time or
+                    giving towards, whether that's a school year, a term of outings,
+                    or an hour a week as a volunteer.
+                </p>
+
+                <div class="lede-actions">
+
+                    <a href="{% url 'contact' %}" class="btn btn-custom">
+                        Support a Programme
+                    </a>
+
+                    <a href="{% url 'home' %}#volunteer" class="btn btn-cta-inverse">
+                        Volunteer With Us
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-7">
+
+                <ul class="programme-index">
+
+                    <li>
+                        <a href="#education">
+                            <span class="idx-num">01</span>
+                            <span class="idx-body">
+                                <span class="idx-name">Education &amp; Development</span>
+                                <span class="idx-desc">School, homework support and the habit of curiosity</span>
+                            </span>
+                            <span class="idx-arrow">&rarr;</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#health">
+                            <span class="idx-num">02</span>
+                            <span class="idx-body">
+                                <span class="idx-name">Health &amp; Wellbeing</span>
+                                <span class="idx-desc">Meals, check-ups and someone to talk to</span>
+                            </span>
+                            <span class="idx-arrow">&rarr;</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#life-skills">
+                            <span class="idx-num">03</span>
+                            <span class="idx-body">
+                                <span class="idx-name">Life Skills</span>
+                                <span class="idx-desc">Cooking, budgeting and everyday independence</span>
+                            </span>
+                            <span class="idx-arrow">&rarr;</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#recreation">
+                            <span class="idx-num">04</span>
+                            <span class="idx-body">
+                                <span class="idx-name">Recreation &amp; Activities</span>
+                                <span class="idx-desc">Football, birthdays and ordinary Saturdays</span>
+                            </span>
+                            <span class="idx-arrow">&rarr;</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#safeguarding">
+                            <span class="idx-num">05</span>
+                            <span class="idx-body">
+                                <span class="idx-name">Child Safeguarding</span>
+                                <span class="idx-desc">Checks, training and a clear way to raise concerns</span>
+                            </span>
+                            <span class="idx-arrow">&rarr;</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#christian-values">
+                            <span class="idx-num">06</span>
+                            <span class="idx-body">
+                                <span class="idx-name">Christian Values</span>
+                                <span class="idx-desc">Prayer, Sunday worship and values we try to live</span>
+                            </span>
+                            <span class="idx-arrow">&rarr;</span>
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     01 - EDUCATION & DEVELOPMENT
+============================================================ -->
+
+<section class="programme-row" id="education">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-3 col-md-4 num-col">
+                <div class="programme-mark">
+                    <i class="flaticon-education" aria-hidden="true"></i>
+                </div>
+                <span class="num-index">01 / 06</span>
+            </div>
+
+            <div class="col-lg-9 col-md-8">
+
+                <h3>School, homework and the habit of curiosity</h3>
+
+                <p>
+                    Every child at Christ Promise attends the local primary or
+                    secondary school, and comes home each afternoon to a settled
+                    homework routine with a member of staff on hand for maths,
+                    English and reading practice. Alongside the school day, we run
+                    library time twice a week and art sessions on Saturdays, and we
+                    encourage children to try an instrument, football or drama
+                    depending on where their interest lies.
+                </p>
+
+                <p>
+                    We speak with class teachers regularly and keep a written record
+                    of each child's progress, so a difficult term is caught early
+                    rather than at the end of the school year.
+                </p>
+
+                <span class="fact-chip">Homework support, three evenings a week</span>
+
+                <div>
+                    <a href="{% url 'contact' %}" class="programme-link">
+                        Ask about sponsoring a school year &rarr;
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     02 - HEALTH & WELLBEING
+============================================================ -->
+
+<section class="programme-row bg-light-band" id="health">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-3 col-md-4 num-col order-md-2">
+                <div class="programme-mark">
+                    <i class="flaticon-healthcare" aria-hidden="true"></i>
+                </div>
+                <span class="num-index">02 / 06</span>
+            </div>
+
+            <div class="col-lg-9 col-md-8 order-md-1">
+
+                <h3>Meals, check-ups and someone to talk to</h3>
+
+                <p>
+                    Three balanced meals and two snacks are prepared daily, with
+                    menus adjusted for children with allergies or specific dietary
+                    needs. Every child is registered with a GP and a dentist, and
+                    vaccination and health records are kept up to date and reviewed
+                    each year.
+                </p>
+
+                <p>
+                    House parents are trained to notice when a child seems anxious,
+                    withdrawn or is struggling to sleep or eat, and we bring in a
+                    qualified counsellor when a child needs more support than we can
+                    give day to day.
+                </p>
+
+                <span class="fact-chip">Registered GP and dentist for every child</span>
+
+                <div>
+                    <a href="{% url 'contact' %}" class="programme-link">
+                        Find out what a health sponsorship covers &rarr;
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     03 - LIFE SKILLS
+============================================================ -->
+
+<section class="programme-row" id="life-skills">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-3 col-md-4 num-col">
+                <div class="programme-mark">
+                    <i class="flaticon-social-care" aria-hidden="true"></i>
+                </div>
+                <span class="num-index">03 / 06</span>
+            </div>
+
+            <div class="col-lg-9 col-md-8">
+
+                <h3>Cooking, budgeting and everyday independence</h3>
+
+                <p>
+                    From around the age of ten, children take turns helping to plan
+                    a meal, write the shopping list and cook alongside a member of
+                    staff. Older children manage a small weekly allowance, do their
+                    own laundry, and are shown how to open and manage a bank account
+                    well before they are due to leave the Home.
+                </p>
+
+                <p>
+                    None of this is left until the last minute. The aim is that by
+                    the time a young person moves on, running a household is
+                    already familiar rather than something new to learn under
+                    pressure.
+                </p>
+
+                <span class="fact-chip">Weekly allowance and budgeting practice from age 14</span>
+
+                <div>
+                    <a href="{% url 'contact' %}" class="programme-link">
+                        Ask about mentoring a young person &rarr;
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     04 - RECREATION & ACTIVITIES
+============================================================ -->
+
+<section class="programme-row bg-light-band" id="recreation">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-3 col-md-4 num-col order-md-2">
+                <div class="programme-mark">
+                    <i class="flaticon-kindness" aria-hidden="true"></i>
+                </div>
+                <span class="num-index">04 / 06</span>
+            </div>
+
+            <div class="col-lg-9 col-md-8 order-md-1">
+
+                <h3>Football, birthdays and ordinary Saturdays</h3>
+
+                <p>
+                    We keep space in the week for the things that make childhood
+                    feel normal: a Saturday football match, board games after
+                    dinner, a birthday properly celebrated with cake and friends
+                    round the table. Once a term we organise a day out &mdash; the
+                    beach, a museum, or simply a park with a picnic &mdash; largely
+                    funded through the kindness of supporters.
+                </p>
+
+                <p>
+                    These afternoons are not an afterthought. They are part of how
+                    children build friendships and confidence outside the
+                    classroom.
+                </p>
+
+                <span class="fact-chip">One organised outing every school term</span>
+
+                <div>
+                    <a href="{% url 'contact' %}" class="programme-link">
+                        Sponsor a term's outing &rarr;
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     05 - CHILD SAFEGUARDING
+============================================================ -->
+
+<section class="programme-row bg-dark-band" id="safeguarding">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-3 col-md-4 num-col">
+                <div class="programme-mark">
+                    <i class="flaticon-home" aria-hidden="true"></i>
+                </div>
+                <span class="num-index">05 / 06</span>
+            </div>
+
+            <div class="col-lg-9 col-md-8">
+
+                <h3>Checks, training and a clear way to raise concerns</h3>
+
+                <p>
+                    Every member of staff and volunteer is background-checked
+                    before they work with a child, and completes safeguarding
+                    training on induction and again every year. Our written
+                    safeguarding policy covers everything from visitor access to
+                    how a concern is recorded and escalated, and every child is
+                    told, in language they understand, who they can speak to if
+                    something feels wrong.
+                </p>
+
+                <p>
+                    This is not paperwork kept in a drawer. It shapes daily
+                    decisions, from who is allowed to collect a child from school
+                    to who they may spend time with unsupervised.
+                </p>
+
+                <span class="fact-chip">All staff background-checked and safeguarding trained</span>
+
+                <div>
+                    <a href="transparency.html" class="programme-link">
+                        Read our safeguarding policy &rarr;
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     06 - CHRISTIAN VALUES
+============================================================ -->
+
+<section class="programme-row" id="christian-values">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-3 col-md-4 num-col">
+                <div class="programme-mark">
+                    <i class="flaticon-diet" aria-hidden="true"></i>
+                </div>
+                <span class="num-index">06 / 06</span>
+            </div>
+
+            <div class="col-lg-9 col-md-8">
+
+                <h3>Prayer, Sunday worship and values we try to live</h3>
+
+                <p>
+                    Mornings begin with a short prayer, and children join a local
+                    church on Sundays. Bible stories are shared at an
+                    age-appropriate level, but we place just as much weight on the
+                    daily practice of kindness, honesty and forgiveness &mdash;
+                    apologising properly, keeping a promise, looking after a
+                    younger child without being asked.
+                </p>
+
+                <p>
+                    Faith at the Home is meant to be lived through the week, not
+                    confined to an hour on a Sunday.
+                </p>
+
+                <span class="fact-chip">Morning prayer and weekly Sunday worship</span>
+
+                <div>
+                    <a href="{% url 'contact' %}" class="programme-link">
+                        Ask about faith-based sponsorship &rarr;
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     PROGRAMME FAQ
+============================================================ -->
+
+<section class="programme-faq" id="programme-faq">
+
+    <div class="container">
+
+        <div class="section-header text-center">
+
+            <p>
+                Common Questions
+            </p>
+
+            <h2>
+                Questions people ask about our programmes
+            </h2>
+
+        </div>
+
+        <div class="faq-grid">
+
+            <div class="faq-item">
+                <h3>How is each programme funded?</h3>
+                <p>
+                    Every programme &mdash; education, health, life skills,
+                    recreation, safeguarding and Christian teaching &mdash; is
+                    funded through a mix of individual sponsorship, church
+                    partnerships and one-off donations. Supporters can choose to
+                    give towards a specific programme, such as a child's school
+                    fees or a term's outings, rather than a general fund. See our
+                    <a href="transparency.html">transparency and accountability</a>
+                    page for how funds are recorded and reported.
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Can I sponsor one child specifically?</h3>
+                <p>
+                    Yes. Sponsorship can be directed towards a specific area of a
+                    child's care, such as their schooling, health needs or a
+                    yearly wardrobe, or towards the Home more generally. Get in
+                    touch through our <a href="{% url 'contact' %}">contact page</a>
+                    and we'll talk through what's needed at the moment.
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Do you accept volunteers, and what would I be doing?</h3>
+                <p>
+                    We do, in areas such as homework support, life skills
+                    mentoring for older children, and help running Saturday
+                    activities. All volunteers go through the same
+                    background checks and safeguarding training as staff before
+                    they spend time with a child. Visit our
+                    <a href="{% url 'home' %}#volunteer">volunteering section</a>
+                    to find out more or apply.
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <h3>What age are the children in your care?</h3>
+                <p>
+                    Children come to us at different ages and stay until they are
+                    ready to live independently. Programmes such as life skills
+                    and budgeting are introduced gradually from around age ten and
+                    become more hands-on in the teenage years, so that each young
+                    person leaves with practical experience already behind them.
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <h3>How do you handle a safeguarding concern?</h3>
+                <p>
+                    Every concern is recorded, assessed and escalated following
+                    our written safeguarding policy, and every child is told who
+                    they can speak to directly. If you have a concern of your
+                    own, you can raise it through our
+                    <a href="{% url 'contact' %}">contact page</a> or read the
+                    full policy on our
+                    <a href="safeguarding.html">child safeguarding</a> page.
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Is Christ Promise a registered UK charity?</h3>
+                <p>
+                    Christ Promise Children's Home is based at 20 Crescent Road,
+                    London E18 1HB, and has operated as a Christ-centred
+                    children's home since 2014. For registration details,
+                    governance and how the Home is run, see our
+                    <a href="{% url 'about' %}">About Us</a> page.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ============================================================
+     CLOSING CTA
+============================================================ -->
+
+<section class="cta-band">
+
+    <div class="container">
+
+        <div class="cta-wrap">
+
+            <h2>
+                None of this happens without people who choose to help
+            </h2>
+
+            <p>
+                Whether it's a school year, a term's outings or an hour a week of
+                your time, there is a practical way to take part in one of these
+                programmes.
+            </p>
+
+            <div class="cta-actions">
+
+                <a href="{% url 'contact' %}" class="btn btn-custom">
+                    Get in Touch
+                </a>
+
+                <a href="{% url 'home' %}#volunteer" class="btn-white-outline">
+                    See How to Volunteer
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="row">
+
+
+            <!-- HOME INFORMATION -->
+
+            <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
+
+                <div class="footer-contact">
+
+                    <h2>
+                        Christ Promise Children's Home
+                    </h2>
+
+                    <p>
+                        A Christ-centred home established in 2014,
+                        committed to raising children with love, faith
+                        and purpose.
+                    </p>
+
+                    <p>
+                        We believe every child deserves to be loved,
+                        protected, educated and given the opportunity
+                        to build a hopeful future.
+                    </p>
+
+                    <div class="footer-address">
+
+                        <strong>
+                            Our Address
+                        </strong>
+
+                        <p class="mb-0">
+                            20 Crescent Road,<br>
+                            London E18 1HB,<br>
+                            UK
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- EXPLORE -->
+
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+
+                <div class="footer-link">
+
+                    <h2>
+                        Explore
+                    </h2>
+
+                    <a href="{% url 'home' %}">
+                        Home
+                    </a>
+
+                    <a href="{% url 'about' %}">
+                        About Us
+                    </a>
+
+                    <a href="{% url 'programmes' %}">
+                        Our Programmes
+                    </a>
+
+                    <a href="{% url 'home' %}#volunteer">
+                        Get Involved
+                    </a>
+
+                    <a href="{% url 'home' %}#children">
+                        Our Children
+                    </a>
+
+                    <a href="{% url 'gallery' %}">
+                        Gallery
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- INFORMATION -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="footer-link">
+
+                    <h2>
+                        Information
+                    </h2>
+
+                    
+
+                    <a href="{% url 'home' %}#faq">
+                        Frequently Asked Questions
+                    </a>
+
+                    
+
+                    <a href="{% url 'contact' %}">
+                        Contact Us
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- COPYRIGHT -->
+
+    <div class="container copyright">
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <p>
+                    &copy; 2026
+                    <a href="{% url 'home' %}">
+                        Christ Promise Children's Home
+                    </a>.
+                    All Rights Reserved.
+                </p>
+
+            </div>
+
+
+            <div class="col-md-6">
+
+                <p>
+                    Developed by
+                    <a href="#">
+                        Somtohgist
+                    </a>
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- ============================================================
+     BACK TO TOP
+============================================================ -->
+
+<a
+    href="#"
+    class="back-to-top"
+    aria-label="Back to top"
+>
+    <i class="fa fa-chevron-up"></i>
+</a>
+
+
+<!-- ============================================================
+     PRE LOADER
+============================================================ -->
+
+<div
+    id="loader"
+    class="show"
+>
+    <div class="loader"></div>
+</div>
+
+
+<!-- ============================================================
+     JAVASCRIPT
+============================================================ -->
+
+<script src='https://code.jquery.com/jquery-3.4.1.min.js'"></script>
+
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js'></script>
+
+<script src="{% static 'website/lib/easing/easing.min.js' %}"></script>
+
+<script src="{% static 'website/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+<script src="{% static 'website/lib/waypoints/waypoints.min.js' %}"></script>
+
+<script src="{% static 'website/lib/counterup/counterup.min.js' %}"></script>
+
+<script src="{% static 'website/lib/parallax/parallax.min.js' %}"></script>
+
+<script src="{% static 'website/mail/jqBootstrapValidation.min.js' %}"></script>
+<script src="{% static 'website/mail/contact.js' %}"></script>
+
+<script src="{% static 'website/js/main.js' %}"></script>
+
+</body>
+
+</html>
