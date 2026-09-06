@@ -8,4 +8,11 @@ urlpatterns = [
     path("programmes/", views.programmes, name="programmes"),
     path("gallery/", views.gallery, name="gallery"),
     path("donate/", views.donate, name="donate"),
+   path("privacy-policy/", views.privacy_policy, name="privacy_policy"),
+path("safeguarding/", views.safeguarding, name="safeguarding"),
+path(
+    "terms-and-conditions/",
+    views.terms_and_condition,
+    name="terms_and_conditions",
+),
 ]

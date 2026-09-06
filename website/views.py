@@ -20,3 +20,13 @@ def gallery(request):
 
 def donate(request):
     return render(request, "website/donate.html")
+
+def privacy_policy(request):
+    return render(request, "website/privacy_policy.html")
+
+
+def safeguarding(request):
+    return render(request, "website/Safeguarding.html")
+
+def terms_and_condition(request):
+    return render(request, "website/terms_and_conditions.html")

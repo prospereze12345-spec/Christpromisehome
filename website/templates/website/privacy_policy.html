@@ -6,36 +6,18 @@
 
     <meta charset="utf-8">
 
-    <title>Donate Now | Christ Promise Children's Home</title>
+    <title>Privacy Policy | Christ Promise Children's Home</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
-          content="Donate to Christ Promise Children's Home to help provide meals, education, health care and a safe home for children in our care.">
-
-    <meta name="keywords"
-          content="donate to children's home, sponsor a child UK, Christ Promise Children's Home donation, children's charity giving">
-
-    <meta name="author"
-          content="Christ Promise Children's Home">
+          content="How Christ Promise Children's Home collects, uses and protects your personal information.">
 
     <meta name="robots"
           content="index, follow">
 
     <meta name="theme-color"
           content="#102a43">
-
-    <meta property="og:type"
-          content="website">
-
-    <meta property="og:title"
-          content="Donate Now | Christ Promise Children's Home">
-
-    <meta property="og:description"
-          content="Your gift keeps a child fed, in school and safe. Donate to Christ Promise Children's Home.">
-
-    <meta property="og:image"
-          content="{% static 'website/img/children.JPG' %}">
 
     <link href="{% static 'website/img/favicon.ico' %}"
           rel="icon">
@@ -611,107 +593,96 @@
         }
 
         .page-banner h1 {
-            margin-bottom: 0;
+            margin-bottom: 10px;
             color: #ffffff;
             font-weight: 700;
             font-size: clamp(1.9rem, 3.6vw, 2.7rem);
         }
 
-        /* ---- Donate section ---- */
-        .donate-section {
-            position: relative;
-            padding: 90px 0;
-            background-position: center;
-            background-size: cover;
-            background-image: url('/static/website/img/donate.jpg');
-        }
-
-        .donate-section::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: rgba(16, 42, 67, .85);
-            z-index: 1;
-        }
-
-        .donate-section .container {
-            position: relative;
-            z-index: 2;
-        }
-
-        .donate-content {
-            max-width: 480px;
-        }
-
-        .donate-content .section-header {
-            margin-left: 0;
-            margin-right: 0;
-            max-width: 100%;
-            text-align: left;
-        }
-
-        .donate-content .section-header h2 {
-            color: #ffffff;
-        }
-
-        .donate-content p {
-            color: rgba(255,255,255,.82);
-        }
-
-        .donate-content .donate-fact {
-            display: inline-flex;
-            align-items: center;
-            margin-top: 8px;
-            padding: 9px 16px;
-            border: 1px solid rgba(255,255,255,.25);
-            border-radius: 3px;
-            background: rgba(255,255,255,.06);
-            color: #ffffff;
-            font-weight: 600;
+        .page-banner .updated {
+            margin-bottom: 0;
+            color: rgba(255,255,255,.65);
             font-size: .88rem;
+            font-weight: 600;
         }
 
-        .donate-form {
-            width: 100%;
-            padding: 40px 35px;
+        /* ---- Policy content ---- */
+        .policy-content {
+            padding: 70px 0 90px;
             background: #ffffff;
-            border-radius: 4px;
         }
 
-        .donate-form h3 {
-            margin-bottom: 22px;
+        .policy-wrap {
+            max-width: 780px;
+            margin: 0 auto;
+        }
+
+        .policy-wrap .intro {
+            margin-bottom: 40px;
+            color: var(--cp-muted);
+            font-size: 1.02rem;
+        }
+
+        .policy-block {
+            padding: 26px 0;
+            border-top: 1px solid var(--cp-border);
+        }
+
+        .policy-block:last-child {
+            border-bottom: 1px solid var(--cp-border);
+        }
+
+        .policy-block h2 {
+            margin-bottom: 12px;
             color: var(--cp-blue);
             font-weight: 700;
+            font-size: 1.3rem;
         }
 
-        .donate-form .control-group {
-            margin-bottom: 18px;
+        .policy-block p {
+            margin-bottom: 14px;
+            color: var(--cp-text);
         }
 
-        .donate-form .form-control {
-            min-height: 50px;
+        .policy-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        .policy-block ul {
+            margin: 0 0 14px;
+            padding-left: 20px;
+            color: var(--cp-text);
+        }
+
+        .policy-block ul:last-child {
+            margin-bottom: 0;
+        }
+
+        .policy-block li {
+            margin-bottom: 8px;
+            line-height: 1.7;
+        }
+
+        .policy-block a {
+            color: var(--cp-red);
+            font-weight: 600;
+        }
+
+        .policy-block a:hover {
+            color: var(--cp-red-dark);
+        }
+
+        .policy-contact-note {
+            margin-top: 44px;
+            padding: 22px 24px;
             border: 1px solid var(--cp-border);
             border-radius: 3px;
+            background: var(--cp-light);
         }
 
-        .donate-form textarea.form-control {
-            min-height: 130px;
-        }
-
-        .donate-form .btn {
-            width: 100%;
-            min-height: 48px;
-        }
-
-        @media (max-width: 991.98px) {
-            .donate-content {
-                max-width: 100%;
-                margin-bottom: 40px;
-            }
-
-            .donate-content .section-header {
-                text-align: center;
-            }
+        .policy-contact-note p {
+            margin-bottom: 0;
+            color: var(--cp-text);
         }
 
         @media (max-width: 767.98px) {
@@ -719,12 +690,12 @@
                 padding: 44px 0 40px;
             }
 
-            .donate-section {
-                padding: 65px 0;
+            .policy-content {
+                padding: 50px 0 65px;
             }
 
-            .donate-form {
-                padding: 30px 22px;
+            .policy-block h2 {
+                font-size: 1.16rem;
             }
         }
     </style>
@@ -783,9 +754,9 @@
                         Our Programmes
                     </a>
 
-                    <a href="{% url 'donate' %}"
+                    <a href="{% url 'home' %}#news"
                        class="nav-item nav-link">
-                        Donate
+                        News &amp; Updates
                     </a>
 
                     <a href="gallery.html"
@@ -814,12 +785,16 @@
     <div class="container">
 
         <p class="crumb">
-            <a href="{% url 'home' %}">Home</a> / Donate Now
+            <a href="{% url 'home' %}">Home</a> / Privacy Policy
         </p>
 
         <h1>
-            Donate Now
+            Privacy Policy
         </h1>
+
+        <p class="updated">
+            Last reviewed: September 2026
+        </p>
 
     </div>
 
@@ -827,79 +802,114 @@
 
 
 <!-- ============================================================
-     DONATE
+     POLICY CONTENT
 ============================================================ -->
 
-<section class="donate-section">
+<section class="policy-content">
 
     <div class="container">
 
-        <div class="row align-items-center">
+        <div class="policy-wrap">
 
-            <div class="col-lg-7">
+            <p class="intro">
+                This policy explains what personal information Christ
+                Promise Children's Home collects through this website, why
+                we collect it, and how it is kept safe.
+            </p>
 
-                <div class="donate-content">
-
-                    <div class="section-header">
-                        <p>Support Our Work</p>
-                        <h2>Your gift keeps a child fed, in school and safe</h2>
-                    </div>
-
-                    <p>
-                        Every donation to Christ Promise Children's Home goes
-                        directly towards the day-to-day cost of raising a
-                        child &mdash; meals, school fees, health care and a
-                        settled home life. Whether it's a one-off gift or an
-                        ongoing contribution, we will be in touch personally
-                        to let you know how it's being used.
-                    </p>
-
-                    <span class="donate-fact">Caring for children since 2014</span>
-
-                </div>
-
+            <div class="policy-block">
+                <h2>Who we are</h2>
+                <p>
+                    Christ Promise Children's Home is based at 20 Crescent
+                    Road, London E18 1HB. For any question about this
+                    policy or your information, contact us through our
+                    <a href="{% url 'contact' %}">Contact page</a>.
+                </p>
             </div>
 
-            <div class="col-lg-5">
+            <div class="policy-block">
+                <h2>Information we collect</h2>
+                <p>
+                    We only collect what is needed to respond to you:
+                </p>
+                <ul>
+                    <li>Name, email address, subject and message when you use our contact form.</li>
+                    <li>Email address, phone number and message when you make a donation enquiry.</li>
+                    <li>Details you choose to share when applying to volunteer.</li>
+                </ul>
+                <p>
+                    We do not knowingly collect information from children
+                    through this website, and this website is not directed
+                    at children.
+                </p>
+            </div>
 
-                <div class="donate-form">
+            <div class="policy-block">
+                <h2>How we use your information</h2>
+                <p>
+                    We use the information you give us only to reply to
+                    your enquiry, process a donation, or consider a
+                    volunteer application. We do not sell your information,
+                    and we do not use it for advertising.
+                </p>
+            </div>
 
-                    <h3>Make a Donation</h3>
+            <div class="policy-block">
+                <h2>Photographs of children</h2>
+                <p>
+                    Photographs of children in our care are only published
+                    with appropriate consent, and are chosen and captioned
+                    carefully so that a child cannot be identified or
+                    located by a stranger. If you have a concern about an
+                    image on this site, please contact us and we will
+                    review it promptly.
+                </p>
+            </div>
 
-                    <form name="donateForm" id="donateForm" novalidate="novalidate">
+            <div class="policy-block">
+                <h2>Cookies</h2>
+                <p>
+                    This site uses only the cookies necessary for it to
+                    function correctly. We do not use tracking or
+                    advertising cookies.
+                </p>
+            </div>
 
-                        <div class="control-group">
-                            <input type="email"
-                                   class="form-control"
-                                   id="donateEmail"
-                                   placeholder="Your Email"
-                                   required="required">
-                        </div>
+            <div class="policy-block">
+                <h2>How long we keep your information</h2>
+                <p>
+                    We keep enquiry and donation correspondence for as long
+                    as reasonably needed to deal with your request and meet
+                    our legal and accounting obligations, after which it is
+                    securely deleted.
+                </p>
+            </div>
 
-                        <div class="control-group">
-                            <input type="tel"
-                                   class="form-control"
-                                   id="donatePhone"
-                                   placeholder="Phone Number"
-                                   required="required">
-                        </div>
+            <div class="policy-block">
+                <h2>Your rights</h2>
+                <p>
+                    Under UK data protection law, you can ask us to show
+                    you the information we hold about you, correct it, or
+                    delete it. To make a request, contact us through our
+                    <a href="{% url 'contact' %}">Contact page</a> and we
+                    will respond within a reasonable time.
+                </p>
+            </div>
 
-                        <div class="control-group">
-                            <textarea class="form-control"
-                                      id="donateMessage"
-                                      placeholder="Tell us anything you'd like us to know"></textarea>
-                        </div>
+            <div class="policy-block">
+                <h2>Changes to this policy</h2>
+                <p>
+                    We may update this policy from time to time. The date
+                    at the top of this page shows when it was last
+                    reviewed.
+                </p>
+            </div>
 
-                        <div>
-                            <button class="btn btn-custom" type="submit">
-                                Donate Now
-                            </button>
-                        </div>
-
-                    </form>
-
-                </div>
-
+            <div class="policy-contact-note">
+                <p>
+                    Questions about your data or this policy? Get in touch
+                    via our <a href="{% url 'contact' %}">Contact page</a>.
+                </p>
             </div>
 
         </div>
@@ -1004,13 +1014,15 @@
                         Information
                     </h2>
 
-                   
+                    <a href="{% url 'home' %}#news">
+                        News &amp; Updates
+                    </a>
 
                     <a href="{% url 'home' %}#faq">
                         Frequently Asked Questions
                     </a>
 
-                  
+                    
 
                     <a href="{% url 'contact' %}">
                         Contact Us

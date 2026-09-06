@@ -6,36 +6,18 @@
 
     <meta charset="utf-8">
 
-    <title>Donate Now | Christ Promise Children's Home</title>
+    <title>Child Safeguarding | Christ Promise Children's Home</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
-          content="Donate to Christ Promise Children's Home to help provide meals, education, health care and a safe home for children in our care.">
-
-    <meta name="keywords"
-          content="donate to children's home, sponsor a child UK, Christ Promise Children's Home donation, children's charity giving">
-
-    <meta name="author"
-          content="Christ Promise Children's Home">
+          content="How Christ Promise Children's Home keeps children safe, including safer recruitment and how to raise a concern.">
 
     <meta name="robots"
           content="index, follow">
 
     <meta name="theme-color"
           content="#102a43">
-
-    <meta property="og:type"
-          content="website">
-
-    <meta property="og:title"
-          content="Donate Now | Christ Promise Children's Home">
-
-    <meta property="og:description"
-          content="Your gift keeps a child fed, in school and safe. Donate to Christ Promise Children's Home.">
-
-    <meta property="og:image"
-          content="{% static 'website/img/children.JPG' %}">
 
     <link href="{% static 'website/img/favicon.ico' %}"
           rel="icon">
@@ -611,107 +593,96 @@
         }
 
         .page-banner h1 {
-            margin-bottom: 0;
+            margin-bottom: 10px;
             color: #ffffff;
             font-weight: 700;
             font-size: clamp(1.9rem, 3.6vw, 2.7rem);
         }
 
-        /* ---- Donate section ---- */
-        .donate-section {
-            position: relative;
-            padding: 90px 0;
-            background-position: center;
-            background-size: cover;
-            background-image: url('/static/website/img/donate.jpg');
-        }
-
-        .donate-section::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: rgba(16, 42, 67, .85);
-            z-index: 1;
-        }
-
-        .donate-section .container {
-            position: relative;
-            z-index: 2;
-        }
-
-        .donate-content {
-            max-width: 480px;
-        }
-
-        .donate-content .section-header {
-            margin-left: 0;
-            margin-right: 0;
-            max-width: 100%;
-            text-align: left;
-        }
-
-        .donate-content .section-header h2 {
-            color: #ffffff;
-        }
-
-        .donate-content p {
-            color: rgba(255,255,255,.82);
-        }
-
-        .donate-content .donate-fact {
-            display: inline-flex;
-            align-items: center;
-            margin-top: 8px;
-            padding: 9px 16px;
-            border: 1px solid rgba(255,255,255,.25);
-            border-radius: 3px;
-            background: rgba(255,255,255,.06);
-            color: #ffffff;
-            font-weight: 600;
+        .page-banner .updated {
+            margin-bottom: 0;
+            color: rgba(255,255,255,.65);
             font-size: .88rem;
+            font-weight: 600;
         }
 
-        .donate-form {
-            width: 100%;
-            padding: 40px 35px;
+        /* ---- Policy content ---- */
+        .policy-content {
+            padding: 70px 0 90px;
             background: #ffffff;
-            border-radius: 4px;
         }
 
-        .donate-form h3 {
-            margin-bottom: 22px;
+        .policy-wrap {
+            max-width: 780px;
+            margin: 0 auto;
+        }
+
+        .policy-wrap .intro {
+            margin-bottom: 40px;
+            color: var(--cp-muted);
+            font-size: 1.02rem;
+        }
+
+        .policy-block {
+            padding: 26px 0;
+            border-top: 1px solid var(--cp-border);
+        }
+
+        .policy-block:last-child {
+            border-bottom: 1px solid var(--cp-border);
+        }
+
+        .policy-block h2 {
+            margin-bottom: 12px;
             color: var(--cp-blue);
             font-weight: 700;
+            font-size: 1.3rem;
         }
 
-        .donate-form .control-group {
-            margin-bottom: 18px;
+        .policy-block p {
+            margin-bottom: 14px;
+            color: var(--cp-text);
         }
 
-        .donate-form .form-control {
-            min-height: 50px;
+        .policy-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        .policy-block ul {
+            margin: 0 0 14px;
+            padding-left: 20px;
+            color: var(--cp-text);
+        }
+
+        .policy-block ul:last-child {
+            margin-bottom: 0;
+        }
+
+        .policy-block li {
+            margin-bottom: 8px;
+            line-height: 1.7;
+        }
+
+        .policy-block a {
+            color: var(--cp-red);
+            font-weight: 600;
+        }
+
+        .policy-block a:hover {
+            color: var(--cp-red-dark);
+        }
+
+        .policy-contact-note {
+            margin-top: 44px;
+            padding: 22px 24px;
             border: 1px solid var(--cp-border);
             border-radius: 3px;
+            background: var(--cp-light);
         }
 
-        .donate-form textarea.form-control {
-            min-height: 130px;
-        }
-
-        .donate-form .btn {
-            width: 100%;
-            min-height: 48px;
-        }
-
-        @media (max-width: 991.98px) {
-            .donate-content {
-                max-width: 100%;
-                margin-bottom: 40px;
-            }
-
-            .donate-content .section-header {
-                text-align: center;
-            }
+        .policy-contact-note p {
+            margin-bottom: 0;
+            color: var(--cp-text);
         }
 
         @media (max-width: 767.98px) {
@@ -719,12 +690,12 @@
                 padding: 44px 0 40px;
             }
 
-            .donate-section {
-                padding: 65px 0;
+            .policy-content {
+                padding: 50px 0 65px;
             }
 
-            .donate-form {
-                padding: 30px 22px;
+            .policy-block h2 {
+                font-size: 1.16rem;
             }
         }
     </style>
@@ -783,9 +754,9 @@
                         Our Programmes
                     </a>
 
-                    <a href="{% url 'donate' %}"
+                    <a href="{% url 'home' %}#news"
                        class="nav-item nav-link">
-                        Donate
+                        News &amp; Updates
                     </a>
 
                     <a href="gallery.html"
@@ -814,12 +785,16 @@
     <div class="container">
 
         <p class="crumb">
-            <a href="{% url 'home' %}">Home</a> / Donate Now
+            <a href="{% url 'home' %}">Home</a> / Child Safeguarding
         </p>
 
         <h1>
-            Donate Now
+            Child Safeguarding
         </h1>
+
+        <p class="updated">
+            Last reviewed: September 2026
+        </p>
 
     </div>
 
@@ -827,79 +802,98 @@
 
 
 <!-- ============================================================
-     DONATE
+     POLICY CONTENT
 ============================================================ -->
 
-<section class="donate-section">
+<section class="policy-content">
 
     <div class="container">
 
-        <div class="row align-items-center">
+        <div class="policy-wrap">
 
-            <div class="col-lg-7">
+            <p class="intro">
+                The safety and wellbeing of every child in our care comes
+                before anything else at Christ Promise Children's Home.
+                This page sets out how we work to keep children safe.
+            </p>
 
-                <div class="donate-content">
-
-                    <div class="section-header">
-                        <p>Support Our Work</p>
-                        <h2>Your gift keeps a child fed, in school and safe</h2>
-                    </div>
-
-                    <p>
-                        Every donation to Christ Promise Children's Home goes
-                        directly towards the day-to-day cost of raising a
-                        child &mdash; meals, school fees, health care and a
-                        settled home life. Whether it's a one-off gift or an
-                        ongoing contribution, we will be in touch personally
-                        to let you know how it's being used.
-                    </p>
-
-                    <span class="donate-fact">Caring for children since 2014</span>
-
-                </div>
-
+            <div class="policy-block">
+                <h2>Our commitment</h2>
+                <p>
+                    Every child has the right to grow up free from harm,
+                    neglect and abuse. This principle guides every
+                    decision we make, from who is allowed contact with a
+                    child to how our daily routines are run.
+                </p>
             </div>
 
-            <div class="col-lg-5">
+            <div class="policy-block">
+                <h2>Safer recruitment</h2>
+                <p>
+                    Every member of staff and every volunteer is
+                    background-checked, reference-checked and interviewed
+                    before they are permitted to work with a child. All
+                    complete safeguarding training on induction and again
+                    every year.
+                </p>
+            </div>
 
-                <div class="donate-form">
+            <div class="policy-block">
+                <h2>Code of conduct</h2>
+                <p>
+                    Staff and volunteers follow a written code of conduct
+                    covering appropriate contact with children, supervision
+                    ratios, use of photography, and safe use of the
+                    internet and social media. No adult is left alone with
+                    a child outside of agreed, supervised arrangements.
+                </p>
+            </div>
 
-                    <h3>Make a Donation</h3>
+            <div class="policy-block">
+                <h2>Listening to children</h2>
+                <p>
+                    Every child is told, in language they understand, who
+                    they can speak to if something feels wrong, and that
+                    they will be believed and taken seriously.
+                </p>
+            </div>
 
-                    <form name="donateForm" id="donateForm" novalidate="novalidate">
+            <div class="policy-block">
+                <h2>Raising a concern</h2>
+                <p>
+                    Any concern about a child's welfare, or about the
+                    conduct of a member of staff or volunteer, is recorded,
+                    assessed and escalated without delay, and referred to
+                    the relevant local authority where necessary. If you
+                    have a concern, please contact us directly through our
+                    <a href="{% url 'contact' %}">Contact page</a> and mark
+                    it as a safeguarding matter.
+                </p>
+            </div>
 
-                        <div class="control-group">
-                            <input type="email"
-                                   class="form-control"
-                                   id="donateEmail"
-                                   placeholder="Your Email"
-                                   required="required">
-                        </div>
+            <div class="policy-block">
+                <h2>Whistleblowing</h2>
+                <p>
+                    Staff and volunteers are encouraged to report any
+                    safeguarding concern, including about a colleague,
+                    without fear of blame. Concerns raised in good faith
+                    are always taken seriously.
+                </p>
+            </div>
 
-                        <div class="control-group">
-                            <input type="tel"
-                                   class="form-control"
-                                   id="donatePhone"
-                                   placeholder="Phone Number"
-                                   required="required">
-                        </div>
+            <div class="policy-block">
+                <h2>Policy review</h2>
+                <p>
+                    This policy is reviewed at least once a year, and
+                    sooner if guidance or legislation changes.
+                </p>
+            </div>
 
-                        <div class="control-group">
-                            <textarea class="form-control"
-                                      id="donateMessage"
-                                      placeholder="Tell us anything you'd like us to know"></textarea>
-                        </div>
-
-                        <div>
-                            <button class="btn btn-custom" type="submit">
-                                Donate Now
-                            </button>
-                        </div>
-
-                    </form>
-
-                </div>
-
+            <div class="policy-contact-note">
+                <p>
+                    To raise a safeguarding concern, contact us via our
+                    <a href="{% url 'contact' %}">Contact page</a>.
+                </p>
             </div>
 
         </div>
@@ -1004,13 +998,13 @@
                         Information
                     </h2>
 
-                   
+                    <a href="{% url 'home' %}#news">
+                        News &amp; Updates
+                    </a>
 
                     <a href="{% url 'home' %}#faq">
                         Frequently Asked Questions
-                    </a>
-
-                  
+                    
 
                     <a href="{% url 'contact' %}">
                         Contact Us
