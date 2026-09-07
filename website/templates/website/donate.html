@@ -703,6 +703,38 @@
             min-height: 48px;
         }
 
+        /* ---- Privacy consent checkbox ---- */
+        .consent-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .consent-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-top: 3px;
+            flex: 0 0 auto;
+            accent-color: var(--cp-red);
+        }
+
+        .consent-group label {
+            margin-bottom: 0;
+            color: var(--cp-text);
+            font-size: .88rem;
+            line-height: 1.6;
+        }
+
+        .consent-group a {
+            color: var(--cp-red);
+            font-weight: 600;
+        }
+
+        .consent-group a:hover {
+            color: var(--cp-red-dark);
+        }
+
         @media (max-width: 991.98px) {
             .donate-content {
                 max-width: 100%;
@@ -783,9 +815,9 @@
                         Our Programmes
                     </a>
 
-                    <a href="{% url 'donate' %}"
+                    <a href="{% url 'home' %}#news"
                        class="nav-item nav-link">
-                        Donate
+                        News &amp; Updates
                     </a>
 
                     <a href="gallery.html"
@@ -888,6 +920,17 @@
                             <textarea class="form-control"
                                       id="donateMessage"
                                       placeholder="Tell us anything you'd like us to know"></textarea>
+                        </div>
+
+                        <div class="consent-group">
+                            <input type="checkbox"
+                                   id="donateConsent"
+                                   required="required">
+                            <label for="donateConsent">
+                                I agree to the
+                                <a href="{% url 'privacy_policy' %}" target="_blank" rel="noopener">Privacy Policy</a>
+                                and consent to my information being used to process this donation enquiry.
+                            </label>
                         </div>
 
                         <div>
@@ -1004,13 +1047,13 @@
                         Information
                     </h2>
 
-                   
+                    <a href="{% url 'home' %}#news">
+                        News &amp; Updates
+                    </a>
 
                     <a href="{% url 'home' %}#faq">
                         Frequently Asked Questions
                     </a>
-
-                  
 
                     <a href="{% url 'contact' %}">
                         Contact Us

@@ -288,6 +288,38 @@
             min-height: 48px;
         }
 
+        /* ---- Privacy consent checkbox ---- */
+        .consent-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .consent-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-top: 3px;
+            flex: 0 0 auto;
+            accent-color: var(--cp-red);
+        }
+
+        .consent-group label {
+            margin-bottom: 0;
+            color: var(--cp-text);
+            font-size: .9rem;
+            line-height: 1.6;
+        }
+
+        .consent-group a {
+            color: var(--cp-red);
+            font-weight: 600;
+        }
+
+        .consent-group a:hover {
+            color: var(--cp-red-dark);
+        }
+
         .btn-cta-inverse {
             display: inline-flex;
             align-items: center;
@@ -711,12 +743,12 @@
                         Our Programmes
                     </a>
 
-                    <a href="{% url 'donate' %}"
+                    <a href="{% url 'home' %}#news"
                        class="nav-item nav-link">
-                        Donate
+                        News &amp; Updates
                     </a>
 
-                    <a href="{% url 'gallery' %}"
+                    <a href="gallery.html"
                        class="nav-item nav-link">
                         Gallery
                     </a>
@@ -754,44 +786,6 @@
             safeguarding concern, or simply ask a question, someone from the
             Home will read your message personally.
         </p>
-
-    </div>
-
-</section>
-
-
-<!-- ============================================================
-     QUICK ROUTES
-============================================================ -->
-
-<section class="contact-routes">
-
-    <div class="container">
-
-        <div class="row">
-
-            <div class="col-md-4">
-                <div class="route-item">
-                    <h3>General Enquiries</h3>
-                    <p>Questions about the Home, our programmes or how we're run.</p>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="route-item">
-                    <h3>Volunteering &amp; Support</h3>
-                    <p>Offer your time, sponsor a programme, or ask about giving.</p>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="route-item">
-                    <h3>Safeguarding Concerns</h3>
-                    <p>Message us directly, or see our published safeguarding policy.</p>
-                </div>
-            </div>
-
-        </div>
 
     </div>
 
@@ -887,6 +881,17 @@
 
                         </div>
 
+                        <div class="consent-group">
+                            <input type="checkbox"
+                                   id="contactConsent"
+                                   required="required">
+                            <label for="contactConsent">
+                                I agree to the
+                                <a href="{% url 'privacy_policy' %}" target="_blank" rel="noopener">Privacy Policy</a>
+                                and consent to my information being used to respond to this enquiry.
+                            </label>
+                        </div>
+
                         <div>
 
 <button class="btn btn-cta-inverse" type="submit" id="sendMessageButton">
@@ -902,6 +907,44 @@
             </div>
 
         </section>
+<!-- ============================================================
+     QUICK ROUTES
+============================================================ -->
+
+<section class="contact-routes">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="route-item">
+                    <h3>General Enquiries</h3>
+                    <p>Questions about the Home, our programmes or how we're run.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="route-item">
+                    <h3>Volunteering &amp; Support</h3>
+                    <p>Offer your time, sponsor a programme, or ask about giving.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="route-item">
+                    <h3>Safeguarding Concerns</h3>
+                    <p>Message us directly, or see our published safeguarding policy.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
 <footer class="footer">
 
     <div class="container">
@@ -980,7 +1023,7 @@
                         Our Children
                     </a>
 
-                    <a href="{% url 'gallery' %}">
+                    <a href="gallery.html">
                         Gallery
                     </a>
 
@@ -999,13 +1042,13 @@
                         Information
                     </h2>
 
-                    
+                    <a href="{% url 'home' %}#news">
+                        News &amp; Updates
+                    </a>
 
                     <a href="{% url 'home' %}#faq">
                         Frequently Asked Questions
                     </a>
-
-                    
 
                     <a href="{% url 'contact' %}">
                         Contact Us
