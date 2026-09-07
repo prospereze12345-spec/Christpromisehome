@@ -410,35 +410,63 @@
             object-fit: contain;
             display: block;
         }
+.brand-mobile-text {
+    display: inline-block;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.15;
+    margin-left: 12px;
+    max-width: 260px;
+    color: var(--cp-blue);
+    white-space: normal;
+    vertical-align: middle;
+}
 
-        .brand-mobile-text {
-            display: inline-block;
-            font-size: 19px;
-            font-weight: 700;
-            line-height: 1.15;
-            margin-left: 12px;
-            max-width: 260px;
-            color: var(--cp-blue);
-            white-space: normal;
-            vertical-align: middle;
-        }
+/* Android / Mobile */
+@media (max-width: 991.98px) {
+    .site-logo {
+        height: 44px;
+        max-width: 125px;
+    }
 
-        @media (max-width: 991.98px) {
-            .site-logo {
-                height: 48px;
-                max-width: 145px;
-            }
+    .brand-mobile-text {
+        display: inline-block;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 1.15;
+        margin-left: 7px;
+        max-width: 135px;
+        white-space: normal;
+    }
+}
 
-            .brand-mobile-text {
-                display: inline-block;
-                font-size: 15px;
-                font-weight: 600;
-                line-height: 1.1;
-                margin-left: 8px;
-                max-width: 145px;
-                white-space: normal;
-            }
-        }
+/* Small Android phones */
+@media (max-width: 575.98px) {
+    .site-logo {
+        height: 40px;
+        max-width: 110px;
+    }
+
+    .brand-mobile-text {
+        font-size: 12px;
+        line-height: 1.15;
+        margin-left: 6px;
+        max-width: 125px;
+    }
+}
+
+/* Very small phones */
+@media (max-width: 375px) {
+    .site-logo {
+        height: 37px;
+        max-width: 100px;
+    }
+
+    .brand-mobile-text {
+        font-size: 11px;
+        max-width: 115px;
+    }
+}
 
         @media (max-width: 1199.98px) {
             .navbar-brand {
@@ -707,7 +735,7 @@
          class="site-logo">
 
     <span class="brand-mobile-text">
-        Christ Promise Children's
+        Christ Promise Children's Home
     </span>
 
 </a>
