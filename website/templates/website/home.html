@@ -647,7 +647,37 @@
         .contact-form .btn {
             min-height: 48px;
         }
+.consent-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 20px;
+}
 
+.consent-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-top: 3px;
+    flex: 0 0 auto;
+    accent-color: var(--cp-red);
+}
+
+.consent-group label {
+    margin-bottom: 0;
+    color: #ffffff;
+    font-size: .9rem;
+    line-height: 1.6;
+}
+
+.consent-group a {
+    color: #ffffff;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.consent-group a:hover {
+    color: rgba(255,255,255,.8);
+}
         .blog {
             padding: 90px 0;
             background: var(--cp-light);
@@ -2339,7 +2369,7 @@
 
                 <div class="row align-items-center">
 
-                    <div class="col-lg-5 mb-4 mb-lg-0">
+                   <div class="col-lg-5 mb-4 mb-lg-0">
 
                         <div class="volunteer-form">
 
@@ -2369,6 +2399,17 @@
                                               placeholder="Tell us how you would like to help"
                                               required="required"></textarea>
 
+                                </div>
+
+                                <div class="consent-group">
+                                    <input type="checkbox"
+                                           id="volunteerConsent"
+                                           required="required">
+                                    <label for="volunteerConsent">
+                                        I agree to the
+                                        <a href="{% url 'privacy_policy' %}" target="_blank" rel="noopener">Privacy Policy</a>
+                                        and consent to my information being used to process this volunteering enquiry.
+                                    </label>
                                 </div>
 
                                 <div>
