@@ -33,6 +33,13 @@ ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
     "christpromisehome.onrender.com",
+    "christpromisehome.com",
+    "www.christpromisehome.com",
+]
+CSRF_TRUSTED_ORIGINS = [
+    "https://christpromisehome.com",
+    "https://www.christpromisehome.com",
+    "https://christpromisehome.onrender.com",
 ]
 
 # Application definition
