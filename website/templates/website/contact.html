@@ -3,7 +3,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
 
     <title>Contact Us | Christ Promise Children's Home</title>
@@ -14,7 +13,7 @@
           content="Get in touch with Christ Promise Children's Home to volunteer, sponsor a programme, raise a safeguarding concern, or ask a question. We reply to every message personally.">
 
     <meta name="keywords"
-          content="contact Christ Promise Children's Home, volunteer children's home UK, sponsor a child, safeguarding concern, children's charity London">
+          content="contact Christ Promise Children's Home, volunteer children's home, sponsor a programme, safeguarding concern, children's charity">
 
     <meta name="author"
           content="Christ Promise Children's Home">
@@ -25,6 +24,7 @@
     <meta name="theme-color"
           content="#102a43">
 
+    <!-- Open Graph -->
     <meta property="og:type"
           content="website">
 
@@ -37,18 +37,23 @@
     <meta property="og:image"
           content="{% static 'website/img/children.JPG' %}">
 
-    <link href="{% static 'website/img/favicon.ico' %}"
-          rel="icon">
+    <!-- Favicon -->
+    <link rel="icon"
+          href="{% static 'website/img/favicon.ico' %}">
 
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap"
           rel="stylesheet">
 
+    <!-- Bootstrap -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           rel="stylesheet">
 
+    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
           rel="stylesheet">
 
+    <!-- Template CSS -->
     <link href="{% static 'website/lib/flaticon/font/flaticon.css' %}"
           rel="stylesheet">
 
@@ -61,7 +66,11 @@
     <link href="{% static 'website/css/style.css' %}"
           rel="stylesheet">
 
+
     <style>
+        /* =========================================================
+           BRAND VARIABLES
+        ========================================================= */
 
         :root {
             --cp-blue: #102a43;
@@ -75,6 +84,11 @@
             --cp-muted: #627d98;
         }
 
+
+        /* =========================================================
+           GLOBAL
+        ========================================================= */
+
         html {
             scroll-behavior: smooth;
             overflow-x: hidden;
@@ -85,7 +99,7 @@
             overflow-x: hidden;
             background: var(--cp-white);
             color: var(--cp-text);
-            font-family: 'Quicksand', sans-serif;
+            font-family: "Quicksand", sans-serif;
         }
 
         *,
@@ -96,6 +110,10 @@
 
         img {
             max-width: 100%;
+        }
+
+        section {
+            width: 100%;
         }
 
         section[id] {
@@ -113,15 +131,6 @@
             line-height: 1.8;
         }
 
-        section {
-            width: 100%;
-        }
-
-        .container,
-        .container-fluid {
-            width: 100%;
-        }
-
         a:focus-visible,
         button:focus-visible,
         input:focus-visible,
@@ -129,6 +138,11 @@
             outline: 3px solid rgba(197, 48, 48, .35);
             outline-offset: 3px;
         }
+
+
+        /* =========================================================
+           SECTION HEADERS
+        ========================================================= */
 
         .section-header {
             max-width: 760px;
@@ -149,31 +163,10 @@
             line-height: 1.25;
         }
 
-        .btn-custom {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 46px;
-            padding: 11px 22px;
-            border: 1px solid var(--cp-red) !important;
-            border-radius: 3px;
-            background-color: var(--cp-white) !important;
-            color: red !important;
-            font-weight: 600;
-            text-align: center;
-        }
 
-        .btn-custom:hover,
-        .btn-custom:focus,
-        .btn-custom:active {
-            border-color: var(--cp-red-dark) !important;
-            background-color: var(--cp-red-dark) !important;
-            color: #ffffff !important;
-        }
-
-        .btn {
-            white-space: normal;
-        }
+        /* =========================================================
+           NAVIGATION
+        ========================================================= */
 
         .navbar {
             position: relative;
@@ -246,6 +239,73 @@
             top: 7px;
         }
 
+
+        /* =========================================================
+           LOGO
+        ========================================================= */
+
+        .site-logo {
+            display: block;
+            width: auto;
+            height: 95px;
+            max-width: 280px;
+            object-fit: contain;
+        }
+
+        .brand-mobile-text {
+            display: inline-block;
+            max-width: 260px;
+            margin-left: 12px;
+            color: var(--cp-blue);
+            font-size: 19px;
+            font-weight: 700;
+            line-height: 1.15;
+            vertical-align: middle;
+        }
+
+
+        /* =========================================================
+           PAGE BANNER
+        ========================================================= */
+
+        .page-banner {
+            padding: 56px 0 50px;
+            background: var(--cp-blue);
+        }
+
+        .page-banner .crumb {
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, .65);
+            font-size: .9rem;
+            font-weight: 600;
+        }
+
+        .page-banner .crumb a {
+            color: rgba(255, 255, 255, .85);
+        }
+
+        .page-banner .crumb a:hover {
+            color: #ffffff;
+        }
+
+        .page-banner h1 {
+            margin-bottom: 14px;
+            color: #ffffff;
+            font-size: clamp(1.9rem, 3.6vw, 2.7rem);
+            font-weight: 700;
+        }
+
+        .page-banner p:last-child {
+            max-width: 56ch;
+            margin-bottom: 0;
+            color: rgba(255, 255, 255, .78);
+        }
+
+
+        /* =========================================================
+           CONTACT SECTION
+        ========================================================= */
+
         .contact {
             padding: 90px 0;
             background: #ffffff;
@@ -274,21 +334,42 @@
             min-height: 52px;
             border: 1px solid var(--cp-border);
             border-radius: 3px;
+            color: var(--cp-text);
+        }
+
+        .contact-form .form-control:focus {
+            border-color: var(--cp-blue);
+            box-shadow: 0 0 0 .15rem rgba(16, 42, 67, .08);
         }
 
         .contact-form textarea.form-control {
             min-height: 160px;
+            resize: vertical;
         }
 
         .contact-form .control-group {
             margin-bottom: 18px;
         }
 
-        .contact-form .btn {
-            min-height: 48px;
+
+        /* =========================================================
+           SUCCESS / ERROR MESSAGE
+        ========================================================= */
+
+        #success {
+            margin-bottom: 20px;
         }
 
-        /* ---- Privacy consent checkbox ---- */
+        #success .alert {
+            margin-bottom: 0;
+            border-radius: 4px;
+        }
+
+
+        /* =========================================================
+           PRIVACY CONSENT
+        ========================================================= */
+
         .consent-group {
             display: flex;
             align-items: flex-start;
@@ -320,6 +401,11 @@
             color: var(--cp-red-dark);
         }
 
+
+        /* =========================================================
+           SEND BUTTON
+        ========================================================= */
+
         .btn-cta-inverse {
             display: inline-flex;
             align-items: center;
@@ -340,6 +426,48 @@
             color: #ffffff;
         }
 
+        .btn-cta-inverse:disabled {
+            cursor: not-allowed;
+            opacity: .65;
+        }
+
+
+        /* =========================================================
+           CONTACT ROUTES
+        ========================================================= */
+
+        .contact-routes {
+            padding: 55px 0 0;
+            background: #ffffff;
+        }
+
+        .contact-routes .route-item {
+            padding: 22px 4px;
+            border-top: 1px solid var(--cp-border);
+        }
+
+        .contact-routes .row > div:last-child .route-item {
+            border-bottom: 1px solid var(--cp-border);
+        }
+
+        .contact-routes h3 {
+            margin-bottom: 6px;
+            color: var(--cp-blue);
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
+
+        .contact-routes p {
+            margin-bottom: 0;
+            color: var(--cp-muted);
+            font-size: .92rem;
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
         .footer {
             padding-top: 70px;
             background: var(--cp-blue);
@@ -352,7 +480,7 @@
 
         .footer p,
         .footer a {
-            color: rgba(255,255,255,.82);
+            color: rgba(255, 255, 255, .82);
         }
 
         .footer a:hover {
@@ -365,16 +493,10 @@
             padding: 2px 0;
         }
 
-        .footer-brand {
-            color: #ffffff !important;
-            font-size: 1.3rem;
-            font-weight: 700;
-        }
-
         .footer-address {
             margin-top: 20px;
             padding-top: 18px;
-            border-top: 1px solid rgba(255,255,255,.12);
+            border-top: 1px solid rgba(255, 255, 255, .12);
         }
 
         .footer-address strong {
@@ -387,88 +509,34 @@
             margin-top: 40px;
             padding-top: 25px;
             padding-bottom: 25px;
-            border-top: 1px solid rgba(255,255,255,.12);
+            border-top: 1px solid rgba(255, 255, 255, .12);
         }
 
         .copyright p {
             margin-bottom: 0;
         }
 
+
+        /* =========================================================
+           BACK TO TOP
+        ========================================================= */
+
         .back-to-top {
             z-index: 9999;
+            display: flex !important;
             width: 46px;
             height: 46px;
-            display: flex !important;
             align-items: center;
             justify-content: center;
         }
 
-        .site-logo {
-            height: 95px;
-            width: auto;
-            max-width: 280px;
-            object-fit: contain;
-            display: block;
-        }
-.brand-mobile-text {
-    display: inline-block;
-    font-size: 19px;
-    font-weight: 700;
-    line-height: 1.15;
-    margin-left: 12px;
-    max-width: 260px;
-    color: var(--cp-blue);
-    white-space: normal;
-    vertical-align: middle;
-}
 
-/* Android / Mobile */
-@media (max-width: 991.98px) {
-    .site-logo {
-        height: 44px;
-        max-width: 125px;
-    }
-
-    .brand-mobile-text {
-        display: inline-block;
-        font-size: 13px;
-        font-weight: 600;
-        line-height: 1.15;
-        margin-left: 7px;
-        max-width: 135px;
-        white-space: normal;
-    }
-}
-
-/* Small Android phones */
-@media (max-width: 575.98px) {
-    .site-logo {
-        height: 40px;
-        max-width: 110px;
-    }
-
-    .brand-mobile-text {
-        font-size: 12px;
-        line-height: 1.15;
-        margin-left: 6px;
-        max-width: 125px;
-    }
-}
-
-/* Very small phones */
-@media (max-width: 375px) {
-    .site-logo {
-        height: 37px;
-        max-width: 100px;
-    }
-
-    .brand-mobile-text {
-        font-size: 11px;
-        max-width: 115px;
-    }
-}
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
 
         @media (max-width: 1199.98px) {
+
             .navbar-brand {
                 max-width: 300px;
                 font-size: 1.25rem;
@@ -482,7 +550,9 @@
             }
         }
 
+
         @media (max-width: 991.98px) {
+
             .navbar {
                 padding: .75rem 0;
             }
@@ -502,13 +572,27 @@
                 padding: 11px 4px;
             }
 
+            .site-logo {
+                height: 44px;
+                max-width: 125px;
+            }
+
+            .brand-mobile-text {
+                max-width: 135px;
+                margin-left: 7px;
+                font-size: 13px;
+                font-weight: 600;
+            }
+
             .contact,
             .footer {
                 padding-top: 60px;
             }
         }
 
+
         @media (max-width: 767.98px) {
+
             body {
                 font-size: 15px;
             }
@@ -620,7 +704,33 @@
             }
         }
 
+
+        @media (max-width: 575.98px) {
+
+            .site-logo {
+                height: 40px;
+                max-width: 110px;
+            }
+
+            .brand-mobile-text {
+                max-width: 125px;
+                margin-left: 6px;
+                font-size: 12px;
+                line-height: 1.15;
+            }
+
+            .page-banner {
+                padding: 44px 0 40px;
+            }
+
+            .contact-img img {
+                height: 230px;
+            }
+        }
+
+
         @media (max-width: 480px) {
+
             .container {
                 padding-right: 15px;
                 padding-left: 15px;
@@ -633,13 +743,25 @@
             .section-header p {
                 font-size: .78rem;
             }
+        }
 
-            .contact-img img {
-                height: 230px;
+
+        @media (max-width: 375px) {
+
+            .site-logo {
+                height: 37px;
+                max-width: 100px;
+            }
+
+            .brand-mobile-text {
+                max-width: 115px;
+                font-size: 11px;
             }
         }
 
+
         @media (max-width: 360px) {
+
             .navbar-brand {
                 font-size: .95rem;
             }
@@ -648,151 +770,96 @@
                 font-size: 1.48rem;
             }
         }
-
-        /* ---- Page banner ---- */
-        .page-banner {
-            padding: 56px 0 50px;
-            background: var(--cp-blue);
-        }
-
-        .page-banner .crumb {
-            margin-bottom: 10px;
-            color: rgba(255,255,255,.65);
-            font-size: .9rem;
-            font-weight: 600;
-        }
-
-        .page-banner .crumb a {
-            color: rgba(255,255,255,.85);
-        }
-
-        .page-banner .crumb a:hover {
-            color: #ffffff;
-        }
-
-        .page-banner h1 {
-            margin-bottom: 14px;
-            color: #ffffff;
-            font-weight: 700;
-            font-size: clamp(1.9rem, 3.6vw, 2.7rem);
-        }
-
-        .page-banner p {
-            max-width: 56ch;
-            margin-bottom: 0;
-            color: rgba(255,255,255,.78);
-        }
-
-        .contact-routes {
-            padding: 55px 0 0;
-            background: #ffffff;
-        }
-
-        .contact-routes .route-item {
-            padding: 22px 4px;
-            border-top: 1px solid var(--cp-border);
-        }
-
-        .contact-routes .row > div:last-child .route-item {
-            border-bottom: 1px solid var(--cp-border);
-        }
-
-        .contact-routes h3 {
-            margin-bottom: 6px;
-            color: var(--cp-blue);
-            font-weight: 700;
-            font-size: 1.05rem;
-        }
-
-        .contact-routes p {
-            margin-bottom: 0;
-            color: var(--cp-muted);
-            font-size: .92rem;
-        }
-
-        @media (max-width: 767.98px) {
-            .page-banner {
-                padding: 44px 0 40px;
-            }
-        }
     </style>
 
 </head>
 
+
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark"
-         aria-label="Main navigation">
 
-        <div class="container-fluid">
+<!-- ============================================================
+     NAVIGATION
+============================================================ -->
 
-            <a href="{% url 'home' %}"
-   class="navbar-brand d-flex align-items-center"
-   aria-label="Christ Promise Children's Home home">
+<nav class="navbar navbar-expand-lg navbar-dark"
+     aria-label="Main navigation">
 
-    <img src="{% static 'website/img/PHOTO-2026-09-03-12-55-43.png' %}"
-         alt="Christ Promise Children's Home"
-         class="site-logo">
+    <div class="container-fluid">
 
-    <span class="brand-mobile-text">
-        Christ Promise Children's Home
-    </span>
+        <a href="{% url 'home' %}"
+           class="navbar-brand d-flex align-items-center"
+           aria-label="Christ Promise Children's Home home">
 
-</a>
+            <img src="{% static 'website/img/PHOTO-2026-09-03-12-55-43.png' %}"
+                 alt="Christ Promise Children's Home logo"
+                 class="site-logo">
 
-            <button type="button"
-                    class="navbar-toggler"
-                    data-toggle="collapse"
-                    data-target="#navbarCollapse"
-                    aria-controls="navbarCollapse"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation">
+            <span class="brand-mobile-text">
+                Christ Promise Children's Home
+            </span>
 
-                <span class="navbar-toggler-icon"></span>
+        </a>
 
-            </button>
 
-            <div class="collapse navbar-collapse justify-content-between"
-                 id="navbarCollapse">
+        <button type="button"
+                class="navbar-toggler"
+                data-toggle="collapse"
+                data-target="#navbarCollapse"
+                aria-controls="navbarCollapse"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
 
-                <div class="navbar-nav ml-auto">
+            <span class="navbar-toggler-icon"></span>
 
-                    <a href="{% url 'home' %}"
-                       class="nav-item nav-link">
-                        Home
-                    </a>
+        </button>
 
-                    <a href="{% url 'about' %}" class="nav-item nav-link">
-                        About Us
-                    </a>
 
-                    <a href="{% url 'programmes' %}"
-                       class="nav-item nav-link">
-                        Our Programmes
-                    </a>
+        <div class="collapse navbar-collapse justify-content-between"
+             id="navbarCollapse">
 
-                    <a href="{% url 'home' %}#news"
-                       class="nav-item nav-link">
-                        News &amp; Updates
-                    </a>
+            <div class="navbar-nav ml-auto">
 
-                    <a href="gallery.html"
-                       class="nav-item nav-link">
-                        Gallery
-                    </a>
+                <a href="{% url 'home' %}"
+                   class="nav-item nav-link">
+                    Home
+                </a>
 
-                    <a href="{% url 'contact' %}"
-                       class="nav-item nav-link active">
-                        Contact Us
-                    </a>
+                <a href="{% url 'about' %}"
+                   class="nav-item nav-link">
+                    About Us
+                </a>
 
-                </div>
+                <a href="{% url 'programmes' %}"
+                   class="nav-item nav-link">
+                    Our Programmes
+                </a>
+
+                <a href="{% url 'home' %}#news"
+                   class="nav-item nav-link">
+                    News &amp; Updates
+                </a>
+
+                <a href="{% url 'home' %}#gallery"
+                   class="nav-item nav-link">
+                    Gallery
+                </a>
+
+                <a href="{% url 'contact' %}"
+                   class="nav-item nav-link active"
+                   aria-current="page">
+                    Contact Us
+                </a>
 
             </div>
 
         </div>
 
-    </nav>
+    </div>
+
+</nav>
+
+
 <!-- ============================================================
      PAGE BANNER
 ============================================================ -->
@@ -802,7 +869,9 @@
     <div class="container">
 
         <p class="crumb">
-            <a href="{% url 'home' %}">Home</a> / Contact Us
+            <a href="{% url 'home' %}">Home</a>
+            /
+            Contact Us
         </p>
 
         <h1>
@@ -825,118 +894,181 @@
 ============================================================ -->
 
 <section class="contact"
-                 id="contact">
+         id="contact">
 
-            <div class="container">
+    <div class="container">
 
-                <div class="section-header text-center">
+        <div class="section-header text-center">
 
-                    <p>
-                        Get In Touch
-                    </p>
+            <p>
+                Get In Touch
+            </p>
 
-                    <h2>
-                        We would love to hear from you
-                    </h2>
+            <h2>
+                We would love to hear from you
+            </h2>
 
-                </div>
+        </div>
 
-                <div class="contact-img">
 
-                    <img src="{% static 'website/img/contact.jpg' %}"
-                         alt="Contact Christ Promise Children's Home"
-                         loading="lazy"
-                         decoding="async">
+        <div class="contact-img">
 
-                </div>
+            <img src="{% static 'website/img/contact.jpg' %}"
+                 alt="Contact Christ Promise Children's Home"
+                 loading="lazy"
+                 decoding="async">
 
-                <div class="contact-form">
+        </div>
 
-                    <div id="success"></div>
 
-                    <form name="sentMessage"
-                          id="contactForm"
-                          novalidate="novalidate">
+        <div class="contact-form">
 
-                        <div class="control-group">
+            <!-- AJAX success/error messages appear here -->
+            <div id="success"
+                 aria-live="polite"></div>
 
-                            <input type="text"
-                                   class="form-control"
-                                   id="name"
-                                   placeholder="Your Name"
-                                   required="required"
-                                   data-validation-required-message="Please enter your name">
 
-                            <p class="help-block text-danger"></p>
+            <!-- ====================================================
+                 IMPORTANT:
+                 CSRF TOKEN MUST BE INSIDE THIS FORM.
+            ===================================================== -->
 
-                        </div>
+            <form name="sentMessage"
+                  id="contactForm"
+                  method="POST"
+                  novalidate>
 
-                        <div class="control-group">
+                {% csrf_token %}
 
-                            <input type="email"
-                                   class="form-control"
-                                   id="email"
-                                   placeholder="Your Email"
-                                   required="required"
-                                   data-validation-required-message="Please enter your email">
 
-                            <p class="help-block text-danger"></p>
+                <!-- NAME -->
 
-                        </div>
+                <div class="control-group">
 
-                        <div class="control-group">
+                    <label for="name" class="sr-only">
+                        Your Name
+                    </label>
 
-                            <input type="text"
-                                   class="form-control"
-                                   id="subject"
-                                   placeholder="Subject"
-                                   required="required"
-                                   data-validation-required-message="Please enter a subject">
-
-                            <p class="help-block text-danger"></p>
-
-                        </div>
-
-                        <div class="control-group">
-
-                            <textarea class="form-control"
-                                      id="message"
-                                      placeholder="Message"
-                                      required="required"
-                                      data-validation-required-message="Please enter your message"></textarea>
-
-                            <p class="help-block text-danger"></p>
-
-                        </div>
-
-                        <div class="consent-group">
-                            <input type="checkbox"
-                                   id="contactConsent"
-                                   required="required">
-                            <label for="contactConsent">
-                                I agree to the
-                                <a href="{% url 'privacy_policy' %}" target="_blank" rel="noopener">Privacy Policy</a>
-                                and consent to my information being used to respond to this enquiry.
-                            </label>
-                        </div>
-
-                        <div>
-
-<button class="btn btn-cta-inverse" type="submit" id="sendMessageButton">
-    Send Message
-</button>
-
-                        </div>
-
-                    </form>
+                    <input type="text"
+                           class="form-control"
+                           id="name"
+                           name="name"
+                           placeholder="Your Name"
+                           maxlength="100"
+                           autocomplete="name"
+                           required>
 
                 </div>
 
-            </div>
 
-        </section>
+                <!-- EMAIL -->
+
+                <div class="control-group">
+
+                    <label for="email" class="sr-only">
+                        Your Email
+                    </label>
+
+                    <input type="email"
+                           class="form-control"
+                           id="email"
+                           name="email"
+                           placeholder="Your Email"
+                           maxlength="254"
+                           autocomplete="email"
+                           required>
+
+                </div>
+
+
+                <!-- SUBJECT -->
+
+                <div class="control-group">
+
+                    <label for="subject" class="sr-only">
+                        Subject
+                    </label>
+
+                    <input type="text"
+                           class="form-control"
+                           id="subject"
+                           name="subject"
+                           placeholder="Subject"
+                           maxlength="200"
+                           required>
+
+                </div>
+
+
+                <!-- MESSAGE -->
+
+                <div class="control-group">
+
+                    <label for="message" class="sr-only">
+                        Message
+                    </label>
+
+                    <textarea class="form-control"
+                              id="message"
+                              name="message"
+                              placeholder="Message"
+                              maxlength="5000"
+                              required></textarea>
+
+                </div>
+
+
+                <!-- PRIVACY CONSENT -->
+
+                <div class="consent-group">
+
+                    <input type="checkbox"
+                           id="contactConsent"
+                           name="consent"
+                           value="true"
+                           required>
+
+                    <label for="contactConsent">
+
+                        I agree to the
+                        <a href="{% url 'privacy_policy' %}"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            Privacy Policy
+                        </a>
+                        and consent to my information being used to respond
+                        to this enquiry.
+
+                    </label>
+
+                </div>
+
+
+                <!-- SUBMIT -->
+
+                <div>
+
+                    <button class="btn btn-cta-inverse"
+                            type="submit"
+                            id="sendMessageButton">
+
+                        Send Message
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
 <!-- ============================================================
-     QUICK ROUTES
+     QUICK CONTACT ROUTES
 ============================================================ -->
 
 <section class="contact-routes">
@@ -946,24 +1078,53 @@
         <div class="row">
 
             <div class="col-md-4">
+
                 <div class="route-item">
-                    <h3>General Enquiries</h3>
-                    <p>Questions about the Home, our programmes or how we're run.</p>
+
+                    <h3>
+                        General Enquiries
+                    </h3>
+
+                    <p>
+                        Questions about the Home, our programmes or how we're run.
+                    </p>
+
                 </div>
+
             </div>
 
-            <div class="col-md-4">
-                <div class="route-item">
-                    <h3>Volunteering &amp; Support</h3>
-                    <p>Offer your time, sponsor a programme, or ask about giving.</p>
-                </div>
-            </div>
 
             <div class="col-md-4">
+
                 <div class="route-item">
-                    <h3>Safeguarding Concerns</h3>
-                    <p>Message us directly, or see our published safeguarding policy.</p>
+
+                    <h3>
+                        Volunteering &amp; Support
+                    </h3>
+
+                    <p>
+                        Offer your time, sponsor a programme, or ask about giving.
+                    </p>
+
                 </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="route-item">
+
+                    <h3>
+                        Safeguarding Concerns
+                    </h3>
+
+                    <p>
+                        Message us directly, or see our published safeguarding policy.
+                    </p>
+
+                </div>
+
             </div>
 
         </div>
@@ -972,6 +1133,10 @@
 
 </section>
 
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
 
 <footer class="footer">
 
@@ -1051,7 +1216,7 @@
                         Our Children
                     </a>
 
-                    <a href="gallery.html">
+                    <a href="{% url 'home' %}#gallery">
                         Gallery
                     </a>
 
@@ -1081,18 +1246,18 @@
                     <a href="{% url 'contact' %}">
                         Contact Us
                     </a>
-                    
-<a href="{% url 'privacy_policy' %}">
-    Privacy Policy
-</a>
 
-<a href="{% url 'safeguarding' %}">
-    Safeguarding
-</a>
+                    <a href="{% url 'privacy_policy' %}">
+                        Privacy Policy
+                    </a>
 
-<a href="{% url 'terms_and_conditions' %}">
-    Terms & Conditions
-</a>
+                    <a href="{% url 'safeguarding' %}">
+                        Safeguarding
+                    </a>
+
+                    <a href="{% url 'terms_and_conditions' %}">
+                        Terms &amp; Conditions
+                    </a>
 
                 </div>
 
@@ -1121,7 +1286,6 @@
 
             </div>
 
-
             <div class="col-md-6">
 
                 <p>
@@ -1144,24 +1308,24 @@
      BACK TO TOP
 ============================================================ -->
 
-<a
-    href="#"
-    class="back-to-top"
-    aria-label="Back to top"
->
+<a href="#"
+   class="back-to-top"
+   aria-label="Back to top">
+
     <i class="fa fa-chevron-up"></i>
+
 </a>
 
 
 <!-- ============================================================
-     PRE LOADER
+     PRELOADER
 ============================================================ -->
 
-<div
-    id="loader"
-    class="show"
->
+<div id="loader"
+     class="show">
+
     <div class="loader"></div>
+
 </div>
 
 
@@ -1184,6 +1348,7 @@
 <script src="{% static 'website/lib/parallax/parallax.min.js' %}"></script>
 
 <script src="{% static 'website/mail/jqBootstrapValidation.min.js' %}"></script>
+
 <script src="{% static 'website/mail/contact.js' %}"></script>
 
 <script src="{% static 'website/js/main.js' %}"></script>
