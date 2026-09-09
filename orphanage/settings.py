@@ -138,7 +138,40 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
+# ============================================================
+# EMAIL CONFIGURATION
+# ============================================================
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+CONTACT_EMAIL = os.getenv(
+    "CONTACT_EMAIL",
+    "contact@christpromisehome.com"
+)
 
+DEFAULT_FROM_EMAIL = os.getenv(
+    "DEFAULT_FROM_EMAIL",
+    "contact@christpromisehome.com"
+)
 
+EMAIL_BACKEND = os.getenv(
+    "EMAIL_BACKEND",
+    "django.core.mail.backends.smtp.EmailBackend"
+)
+
+EMAIL_HOST = os.getenv(
+    "EMAIL_HOST",
+    "sm1.cloudoon.com"
+)
+
+EMAIL_PORT = int(os.getenv("EMAIL_PORT", "587"))
+
+EMAIL_USE_TLS = os.getenv(
+    "EMAIL_USE_TLS",
+    "True"
+).lower() == "true"
+
+EMAIL_HOST_USER = os.getenv(
+    "EMAIL_HOST_USER",
+    "contact@christpromisehome.com"
+)
+
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")

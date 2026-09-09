@@ -15,4 +15,10 @@ path(
     views.terms_and_condition,
     name="terms_and_conditions",
 ),
+path(
+    "contact/send/",
+    views.send_contact_message,
+    name="send_contact_message"
+),
 ]
+
