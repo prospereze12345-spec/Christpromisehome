@@ -38,128 +38,204 @@ def terms_and_condition(request):
 
 
 
-
+from django.conf import settings
+from django.core.exceptions import ValidationError
+from django.core.mail import send_mail
+from django.core.validators import validate_email
+from django.http import JsonResponse
+from django.views.decorators.http import require_POST
+import logging
 
 from django.conf import settings
-from django.core.mail import EmailMessage
+from django.core.exceptions import ValidationError
+from django.core.mail import send_mail
+from django.core.validators import validate_email
 from django.http import JsonResponse
-from django.shortcuts import render
 from django.views.decorators.http import require_POST
 
 
-def contact(request):
-    return render(request, "website/contact.html")
+logger = logging.getLogger(__name__)
 
 
 @require_POST
 def send_contact_message(request):
+
+    # -----------------------------------------
+    # Get submitted form data
+    # -----------------------------------------
+
     name = request.POST.get("name", "").strip()
     email = request.POST.get("email", "").strip()
     subject = request.POST.get("subject", "").strip()
     message = request.POST.get("message", "").strip()
     consent = request.POST.get("consent")
 
+
+    # -----------------------------------------
     # Validate required fields
-    if not name or not email or not subject or not message:
-        return JsonResponse(
-            {
-                "message": "Please complete all required fields."
-            },
-            status=400
-        )
+    # -----------------------------------------
 
+    if not name:
+        return JsonResponse({
+            "success": False,
+            "message": "Please enter your name."
+        }, status=400)
+
+    if not email:
+        return JsonResponse({
+            "success": False,
+            "message": "Please enter your email address."
+        }, status=400)
+
+    if not subject:
+        return JsonResponse({
+            "success": False,
+            "message": "Please enter a subject."
+        }, status=400)
+
+    if not message:
+        return JsonResponse({
+            "success": False,
+            "message": "Please enter your message."
+        }, status=400)
+
+
+    # -----------------------------------------
     # Privacy consent
-    if consent != "true":
-        return JsonResponse(
-            {
-                "message": "Please agree to the Privacy Policy before sending your message."
-            },
-            status=400
-        )
+    # -----------------------------------------
 
-    # Basic email validation
-    from django.core.validators import validate_email
-    from django.core.exceptions import ValidationError
+    if consent != "true":
+        return JsonResponse({
+            "success": False,
+            "message": (
+                "Please agree to the Privacy Policy "
+                "before sending your message."
+            )
+        }, status=400)
+
+
+    # -----------------------------------------
+    # Validate visitor email
+    # -----------------------------------------
 
     try:
         validate_email(email)
     except ValidationError:
-        return JsonResponse(
-            {
-                "message": "Please enter a valid email address."
-            },
-            status=400
-        )
+        return JsonResponse({
+            "success": False,
+            "message": "Please enter a valid email address."
+        }, status=400)
 
-    # Prevent excessively large submissions
+
+    # -----------------------------------------
+    # Validate input lengths
+    # -----------------------------------------
+
     if len(name) > 100:
-        return JsonResponse(
-            {"message": "Name is too long."},
-            status=400
-        )
+        return JsonResponse({
+            "success": False,
+            "message": "Your name is too long."
+        }, status=400)
 
     if len(subject) > 200:
-        return JsonResponse(
-            {"message": "Subject is too long."},
-            status=400
-        )
+        return JsonResponse({
+            "success": False,
+            "message": "Your subject is too long."
+        }, status=400)
 
     if len(message) > 5000:
-        return JsonResponse(
-            {"message": "Message is too long."},
-            status=400
-        )
+        return JsonResponse({
+            "success": False,
+            "message": (
+                "Your message is too long. "
+                "Please keep it below 5,000 characters."
+            )
+        }, status=400)
 
-    # Email sent to the orphanage mailbox
-    recipient = settings.CONTACT_EMAIL
+
+    # -----------------------------------------
+    # Normalize subject
+    # -----------------------------------------
+
+    subject = " ".join(subject.split())
+
+
+    # -----------------------------------------
+    # Prepare notification email
+    # -----------------------------------------
 
     email_subject = f"Website Contact: {subject}"
 
-    email_body = f"""
-New message received from the Christ Promise Children's Home website.
+    email_body = f"""\
+New message received from the
+Christ Promise Children's Home website.
 
-Name: {name}
-Email: {email}
-Subject: {subject}
+----------------------------------------
+Visitor Information
+----------------------------------------
 
-Message:
+Name:
+{name}
+
+Email:
+{email}
+
+Subject:
+{subject}
+
+----------------------------------------
+Message
+----------------------------------------
+
 {message}
 
------------------------------------
-This message was submitted through:
+----------------------------------------
+
+Reply to:
+{email}
+
+Submitted through:
 https://christpromisehome.com
 """
 
+
+    # -----------------------------------------
+    # Send email
+    # -----------------------------------------
+
     try:
 
-        email_message = EmailMessage(
+        send_mail(
             subject=email_subject,
-            body=email_body,
+            message=email_body,
             from_email=settings.DEFAULT_FROM_EMAIL,
-            to=[recipient],
-            reply_to=[email],
+            recipient_list=[settings.CONTACT_EMAIL],
+            fail_silently=False,
         )
-
-        email_message.send(fail_silently=False)
 
     except Exception:
-        return JsonResponse(
-            {
-                "message": (
-                    "Our mail service is temporarily unavailable. "
-                    "Please try again in a few minutes."
-                )
-            },
-            status=500
+        logger.exception(
+            "Failed to send Christ Promise Children's Home "
+            "contact form email."
         )
 
-    return JsonResponse(
-        {
-            "success": True,
+        return JsonResponse({
+            "success": False,
             "message": (
-                "We have received your message. "
-                "We will get back to you within a few hours."
+                "We couldn't send your message right now. "
+                "Please try again in a few minutes."
             )
-        },
-        status=200
-    )
+        }, status=500)
+
+
+    # -----------------------------------------
+    # Success
+    # -----------------------------------------
+
+    return JsonResponse({
+        "success": True,
+        "message": (
+            "We have received your message. "
+            "We will get back to you within a few hours."
+        )
+    }, status=200)

@@ -17,79 +17,103 @@ $(function () {
         // Clear previous message
         $success.html("");
 
-        // Basic validation
+        // -----------------------------------------
+        // Client-side validation
+        // -----------------------------------------
+
         if (!name || !email || !subject || !message) {
-            $success.html(
-                "<div class='alert alert-danger'>" +
-                "Please complete all required fields." +
-                "</div>"
+            showMessage(
+                "danger",
+                "<strong>Message not sent.</strong> Please complete all required fields."
             );
             return;
         }
 
         if (!consent) {
-            $success.html(
-                "<div class='alert alert-danger'>" +
-                "Please agree to the Privacy Policy before sending your message." +
-                "</div>"
+            showMessage(
+                "danger",
+                "<strong>Message not sent.</strong> Please agree to the Privacy Policy before sending your message."
             );
             return;
         }
 
-        // Basic email validation
         var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         if (!emailPattern.test(email)) {
-            $success.html(
-                "<div class='alert alert-danger'>" +
-                "Please enter a valid email address." +
-                "</div>"
+            showMessage(
+                "danger",
+                "<strong>Message not sent.</strong> Please enter a valid email address."
             );
             return;
         }
 
-        // Disable button while sending
+        // -----------------------------------------
+        // Get CSRF token directly from Django form
+        // -----------------------------------------
+
+        var csrftoken = $form
+            .find('input[name="csrfmiddlewaretoken"]')
+            .val();
+
+        if (!csrftoken) {
+            showMessage(
+                "danger",
+                "<strong>Message not sent.</strong> Security verification failed. Please refresh the page and try again."
+            );
+            return;
+        }
+
+        // -----------------------------------------
+        // Disable button
+        // -----------------------------------------
+
         $button.prop("disabled", true);
         $button.html("Sending...");
 
-        // Get Django CSRF token
-        var csrftoken = getCookie("csrftoken");
+        // -----------------------------------------
+        // Send message to Django
+        // -----------------------------------------
 
         $.ajax({
             url: "/contact/send/",
             type: "POST",
+
             data: {
                 name: name,
                 email: email,
                 subject: subject,
                 message: message,
-                consent: consent
+                consent: consent ? "true" : "false",
+                csrfmiddlewaretoken: csrftoken
             },
+
             headers: {
                 "X-CSRFToken": csrftoken
             },
+
             success: function (response) {
 
-                $success.html(
-                    "<div class='alert alert-success'>" +
-                    "<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>" +
+                showMessage(
+                    "success",
                     "<strong>Thank you!</strong> We have received your message. " +
-                    "We will get back to you within a few hours." +
-                    "</div>"
+                    "We will get back to you within a few hours."
                 );
 
+                // Clear form
                 $form.trigger("reset");
 
-                // Scroll user to confirmation
-                $("html, body").animate({
-                    scrollTop: $success.offset().top - 100
-                }, 400);
+                // Scroll to confirmation
+                scrollToMessage();
             },
 
             error: function (xhr) {
 
                 var errorMessage =
-                    "Sorry, we couldn't send your message right now. Please try again later.";
+                    "We couldn't send your message right now. Please try again in a few minutes.";
+
+                // -----------------------------------------
+                // Django returned a clean error
+                // -----------------------------------------
 
                 if (
                     xhr.responseJSON &&
@@ -98,62 +122,90 @@ $(function () {
                     errorMessage = xhr.responseJSON.message;
                 }
 
-                $success.html(
-                    "<div class='alert alert-danger'>" +
-                    "<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>" +
+                showMessage(
+                    "danger",
                     "<strong>Message not sent.</strong> " +
-                    errorMessage +
-                    "</div>"
+                    escapeHtml(errorMessage)
                 );
 
-                $("html, body").animate({
-                    scrollTop: $success.offset().top - 100
-                }, 400);
+                scrollToMessage();
             },
 
             complete: function () {
 
+                // Always restore button
                 $button.prop("disabled", false);
                 $button.html("Send Message");
-
             }
         });
     });
 
-    /*
-     * Get Django CSRF cookie
-     */
-    function getCookie(name) {
 
-        var cookieValue = null;
+    // -----------------------------------------
+    // Display message
+    // -----------------------------------------
 
-        if (document.cookie && document.cookie !== "") {
+    function showMessage(type, message) {
 
-            var cookies = document.cookie.split(";");
+        var closeButton =
+            "<button type='button' " +
+            "class='close' " +
+            "data-dismiss='alert' " +
+            "aria-hidden='true'>" +
+            "&times;" +
+            "</button>";
 
-            for (var i = 0; i < cookies.length; i++) {
-
-                var cookie = $.trim(cookies[i]);
-
-                if (cookie.substring(0, name.length + 1) === (name + "=")) {
-
-                    cookieValue = decodeURIComponent(
-                        cookie.substring(name.length + 1)
-                    );
-
-                    break;
-                }
-            }
-        }
-
-        return cookieValue;
+        $("#success").html(
+            "<div class='alert alert-" +
+            type +
+            "'>" +
+            closeButton +
+            message +
+            "</div>"
+        );
     }
 
-    /*
-     * Clear confirmation/error message when user starts typing again.
-     */
-    $("#name, #email, #subject, #message").on("focus", function () {
-        $("#success").html("");
-    });
+
+    // -----------------------------------------
+    // Scroll to message
+    // -----------------------------------------
+
+    function scrollToMessage() {
+
+        var $message = $("#success");
+
+        if ($message.length) {
+            $("html, body").animate(
+                {
+                    scrollTop: $message.offset().top - 100
+                },
+                400
+            );
+        }
+    }
+
+
+    // -----------------------------------------
+    // Escape backend text before displaying it
+    // -----------------------------------------
+
+    function escapeHtml(text) {
+
+        return $("<div>")
+            .text(text)
+            .html();
+    }
+
+
+    // -----------------------------------------
+    // Clear old message when user starts typing
+    // -----------------------------------------
+
+    $("#name, #email, #subject, #message").on(
+        "focus",
+        function () {
+            $("#success").html("");
+        }
+    );
 
 });
