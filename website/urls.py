@@ -20,5 +20,10 @@ path(
     views.send_contact_message,
     name="send_contact_message"
 ),
+path(
+    "donate/send/",
+    views.send_donation_enquiry,
+    name="send_donation_enquiry",
+),
 ]
 

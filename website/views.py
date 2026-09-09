@@ -239,3 +239,156 @@ https://christpromisehome.com
             "We will get back to you within a few hours."
         )
     }, status=200)
+@require_POST
+def send_donation_enquiry(request):
+
+    # -----------------------------------------
+    # Get submitted form data
+    # -----------------------------------------
+
+    email = request.POST.get("email", "").strip()
+    phone = request.POST.get("phone", "").strip()
+    message = request.POST.get("message", "").strip()
+    consent = request.POST.get("consent")
+
+
+    # -----------------------------------------
+    # Validate required fields
+    # -----------------------------------------
+
+    if not email:
+        return JsonResponse({
+            "success": False,
+            "message": "Please enter your email address."
+        }, status=400)
+
+    if not phone:
+        return JsonResponse({
+            "success": False,
+            "message": "Please enter your phone number."
+        }, status=400)
+
+
+    # -----------------------------------------
+    # Privacy consent
+    # -----------------------------------------
+
+    if consent != "true":
+        return JsonResponse({
+            "success": False,
+            "message": (
+                "Please agree to the Privacy Policy "
+                "before continuing."
+            )
+        }, status=400)
+
+
+    # -----------------------------------------
+    # Validate visitor email
+    # -----------------------------------------
+
+    try:
+        validate_email(email)
+    except ValidationError:
+        return JsonResponse({
+            "success": False,
+            "message": "Please enter a valid email address."
+        }, status=400)
+
+
+    # -----------------------------------------
+    # Validate input lengths
+    # -----------------------------------------
+
+    if len(phone) > 30:
+        return JsonResponse({
+            "success": False,
+            "message": "Your phone number is too long."
+        }, status=400)
+
+    if len(message) > 3000:
+        return JsonResponse({
+            "success": False,
+            "message": (
+                "Your message is too long. "
+                "Please keep it below 3,000 characters."
+            )
+        }, status=400)
+
+
+    # -----------------------------------------
+    # Prepare notification email
+    # -----------------------------------------
+
+    email_subject = "Website Donation Enquiry"
+
+    email_body = f"""\
+New donation enquiry received from the
+Christ Promise Children's Home website.
+
+----------------------------------------
+Donor Information
+----------------------------------------
+
+Email:
+{email}
+
+Phone:
+{phone}
+
+----------------------------------------
+Message
+----------------------------------------
+
+{message or "(No message provided)"}
+
+----------------------------------------
+
+Reply to:
+{email}
+
+Submitted through:
+https://christpromisehome.com
+"""
+
+
+    # -----------------------------------------
+    # Send email
+    # -----------------------------------------
+
+    try:
+
+        send_mail(
+            subject=email_subject,
+            message=email_body,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[settings.CONTACT_EMAIL],
+            fail_silently=False,
+        )
+
+    except Exception:
+        logger.exception(
+            "Failed to send Christ Promise Children's Home "
+            "donation enquiry email."
+        )
+
+        return JsonResponse({
+            "success": False,
+            "message": (
+                "We couldn't send your enquiry right now. "
+                "Please try again in a few minutes."
+            )
+        }, status=500)
+
+
+    # -----------------------------------------
+    # Success
+    # -----------------------------------------
+
+    return JsonResponse({
+        "success": True,
+        "message": (
+            "We have received your donation enquiry. "
+            "We will get back to you within a few hours."
+        )
+    }, status=200)

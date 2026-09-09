@@ -922,55 +922,134 @@
 
             <div class="col-lg-5">
 
-                <div class="donate-form">
+           <div class="donate-form">
 
-                    <h3>Make a Donation</h3>
+    <h3>Make a Donation</h3>
 
-                    <form name="donateForm" id="donateForm" novalidate="novalidate">
+    <!-- Response message -->
+    <div id="donateMessage"
+         aria-live="polite"
+         aria-atomic="true">
+    </div>
 
-                        <div class="control-group">
-                            <input type="email"
-                                   class="form-control"
-                                   id="donateEmail"
-                                   placeholder="Your Email"
-                                   required="required">
-                        </div>
+    <form
+        name="donateForm"
+        id="donateForm"
+        method="POST"
+        action="{% url 'send_donation_enquiry' %}"
+        novalidate
+    >
 
-                        <div class="control-group">
-                            <input type="tel"
-                                   class="form-control"
-                                   id="donatePhone"
-                                   placeholder="Phone Number"
-                                   required="required">
-                        </div>
+        {% csrf_token %}
 
-                        <div class="control-group">
-                            <textarea class="form-control"
-                                      id="donateMessage"
-                                      placeholder="Tell us anything you'd like us to know"></textarea>
-                        </div>
+        <!-- EMAIL -->
+        <div class="control-group">
 
-                        <div class="consent-group">
-                            <input type="checkbox"
-                                   id="donateConsent"
-                                   required="required">
-                            <label for="donateConsent">
-                                I agree to the
-                                <a href="{% url 'privacy_policy' %}" target="_blank" rel="noopener">Privacy Policy</a>
-                                and consent to my information being used to process this donation enquiry.
-                            </label>
-                        </div>
+            <label for="donateEmail" class="sr-only">
+                Your Email
+            </label>
 
-                        <div>
-                            <button class="btn btn-custom" type="submit">
-                                Donate Now
-                            </button>
-                        </div>
+            <input
+                type="email"
+                class="form-control"
+                id="donateEmail"
+                name="email"
+                placeholder="Your Email"
+                maxlength="254"
+                autocomplete="email"
+                required
+            >
 
-                    </form>
+        </div>
 
-                </div>
 
+        <!-- PHONE -->
+        <div class="control-group">
+
+            <label for="donatePhone" class="sr-only">
+                Phone Number
+            </label>
+
+            <input
+                type="tel"
+                class="form-control"
+                id="donatePhone"
+                name="phone"
+                placeholder="Phone Number"
+                maxlength="30"
+                autocomplete="tel"
+                required
+            >
+
+        </div>
+
+
+        <!-- MESSAGE -->
+        <div class="control-group">
+
+            <label for="donateMessageText" class="sr-only">
+                Donation Message
+            </label>
+
+            <textarea
+                class="form-control"
+                id="donateMessageText"
+                name="message"
+                placeholder="Tell us anything you'd like us to know"
+                maxlength="3000"
+                rows="5"
+            ></textarea>
+
+        </div>
+
+
+        <!-- PRIVACY CONSENT -->
+        <div class="consent-group">
+
+            <input
+                type="checkbox"
+                id="donateConsent"
+                name="consent"
+                value="true"
+                required
+            >
+
+            <label for="donateConsent">
+
+                I agree to the
+
+                <a
+                    href="{% url 'privacy_policy' %}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Privacy Policy
+                </a>
+
+                and consent to my information being used to process
+                this donation enquiry.
+
+            </label>
+
+        </div>
+
+
+        <!-- SUBMIT -->
+        <div>
+
+            <button
+                class="btn btn-custom"
+                type="submit"
+                id="donateButton"
+            >
+                Donate Now
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
             </div>
 
         </div>
@@ -1169,7 +1248,6 @@
     <div class="loader"></div>
 </div>
 
-
 <!-- ============================================================
      JAVASCRIPT
 ============================================================ -->
@@ -1189,7 +1267,10 @@
 <script src="{% static 'website/lib/parallax/parallax.min.js' %}"></script>
 
 <script src="{% static 'website/mail/jqBootstrapValidation.min.js' %}"></script>
+
 <script src="{% static 'website/mail/contact.js' %}"></script>
+
+<script src="{% static 'website/mail/donate.js' %}"></script>
 
 <script src="{% static 'website/js/main.js' %}"></script>
 
