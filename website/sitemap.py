@@ -16,23 +16,18 @@ Why a dict-based config instead of one class per page:
     one Sitemap subclass per page. When you add a new page, you add one
     line here — nothing else.
 """
-
 from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
 
 
 class StaticViewSitemap(Sitemap):
     """
-    Sitemap for all static, template-only pages on the site.
-
-    `changefreq` and `priority` are hints to crawlers, not guarantees —
-    Google treats `priority` as a very weak signal these days, but it still
-    costs nothing to set it sensibly and some crawlers do use it.
+    Sitemap for the public static pages of
+    Christ Promise Children's Home.
     """
 
     protocol = "https"
 
-    # (url_name, changefreq, priority)
     pages = [
         ("home", "weekly", 1.0),
         ("about", "monthly", 0.9),
@@ -46,8 +41,6 @@ class StaticViewSitemap(Sitemap):
     ]
 
     def items(self):
-        # Sitemap framework calls this to get the "objects"; we just
-        # return our list of tuples and unpack them in the hooks below.
         return self.pages
 
     def location(self, item):

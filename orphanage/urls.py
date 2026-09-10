@@ -27,15 +27,16 @@ sitemaps = {
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-path("", include("website.urls")),
+
+    path("", include("website.urls")),
+
     path(
         "sitemap.xml",
         sitemap,
         {"sitemaps": sitemaps},
         name="sitemap",
     ),
-    path("robots.txt", robots_txt, name="robots_txt"),
 
-    path("", include("website.urls")),
+    path("robots.txt", robots_txt, name="robots_txt"),
 ]
 
