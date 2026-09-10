@@ -135,7 +135,6 @@ STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 # ============================================================
@@ -159,10 +158,13 @@ EMAIL_BACKEND = os.getenv(
 
 EMAIL_HOST = os.getenv(
     "EMAIL_HOST",
-    "sm1.cloudoon.com"
+    "workplace.truehost.cloud"
 )
 
-EMAIL_PORT = int(os.getenv("EMAIL_PORT", "587"))
+EMAIL_PORT = int(os.getenv(
+    "EMAIL_PORT",
+    "587"
+))
 
 EMAIL_USE_TLS = os.getenv(
     "EMAIL_USE_TLS",
@@ -174,4 +176,9 @@ EMAIL_HOST_USER = os.getenv(
     "contact@christpromisehome.com"
 )
 
-EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+EMAIL_HOST_PASSWORD = os.getenv(
+    "EMAIL_HOST_PASSWORD"
+)
+
+# Prevent SMTP connection attempts from hanging indefinitely
+EMAIL_TIMEOUT = 10

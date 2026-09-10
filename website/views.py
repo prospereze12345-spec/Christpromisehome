@@ -239,9 +239,6 @@ https://christpromisehome.com
             "We will get back to you within a few hours."
         )
     }, status=200)
-
-
-    
 @require_POST
 def send_donation_enquiry(request):
 
