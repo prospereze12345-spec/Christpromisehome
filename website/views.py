@@ -392,3 +392,41 @@ https://christpromisehome.com
             "We will get back to you within a few hours."
         )
     }, status=200)
+
+
+
+
+
+import socket
+
+from django.conf import settings
+from django.http import JsonResponse
+from django.views.decorators.http import require_GET
+
+
+@require_GET
+def smtp_test(request):
+    try:
+        host = settings.EMAIL_HOST
+        port = settings.EMAIL_PORT
+
+        socket.setdefaulttimeout(10)
+
+        sock = socket.create_connection((host, port), timeout=10)
+        sock.close()
+
+        return JsonResponse({
+            "success": True,
+            "message": f"Render can connect to {host}:{port}"
+        })
+
+    except Exception as e:
+        logger.exception("SMTP connectivity test failed.")
+
+        return JsonResponse({
+            "success": False,
+            "host": settings.EMAIL_HOST,
+            "port": settings.EMAIL_PORT,
+            "error": type(e).__name__,
+            "message": str(e),
+        }, status=500)
