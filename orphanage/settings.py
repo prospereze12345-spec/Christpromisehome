@@ -43,7 +43,6 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -51,21 +50,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     "website",
-    "django.contrib.sites",       # required by django.contrib.sitemaps
+
+    "django.contrib.sites",
     "django.contrib.sitemaps",
 ]
+
 SITE_ID = 1
 
-
-
-# in production settings
 SEO_ENVIRONMENT = "production"
-
-# in staging/dev settings
-SEO_ENVIRONMENT = "staging"
-
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
