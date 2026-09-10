@@ -135,8 +135,6 @@ STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 # ============================================================
 # EMAIL CONFIGURATION
 # ============================================================
@@ -156,23 +154,27 @@ EMAIL_BACKEND = os.getenv(
     "django.core.mail.backends.smtp.EmailBackend"
 )
 
+# Truehost Workplace SMTP
 EMAIL_HOST = os.getenv(
     "EMAIL_HOST",
-    "sm1.cloudoon.com"
+    "workplace.truehost.cloud"
 )
 
 EMAIL_PORT = int(os.getenv(
     "EMAIL_PORT",
     "587"
 ))
-EMAIL_USE_SSL = os.getenv(
-    "EMAIL_USE_SSL",
-    "False"
-).lower() == "true"
 
+# Port 587 uses STARTTLS
 EMAIL_USE_TLS = os.getenv(
     "EMAIL_USE_TLS",
     "True"
+).lower() == "true"
+
+# Port 587 must NOT use implicit SSL
+EMAIL_USE_SSL = os.getenv(
+    "EMAIL_USE_SSL",
+    "False"
 ).lower() == "true"
 
 EMAIL_HOST_USER = os.getenv(
@@ -181,8 +183,9 @@ EMAIL_HOST_USER = os.getenv(
 )
 
 EMAIL_HOST_PASSWORD = os.getenv(
-    "EMAIL_HOST_PASSWORD"
+    "EMAIL_HOST_PASSWORD",
+    ""
 )
 
-# Prevent SMTP connection attempts from hanging indefinitely
+# Prevent the Render worker from hanging indefinitely
 EMAIL_TIMEOUT = 10
