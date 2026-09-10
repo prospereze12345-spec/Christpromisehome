@@ -1,44 +1,53 @@
 ﻿{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 
 <head>
 
     <meta charset="utf-8">
 
-    <title>Our Programmes | Christ Promise Children's Home</title>
+    <title>Our Programmes | Education, Health &amp; Safeguarding at Christ Promise Children's Home, London</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
-          content="Explore the six programmes at Christ Promise Children's Home: education, health, life skills, recreation, safeguarding and Christian values, and how you can support them.">
+          content="See the six programmes at Christ Promise Children's Home, London: education, health, life skills, recreation, safeguarding and Christian values. Sponsor a programme today.">
 
     <meta name="keywords"
-          content="Christ Promise Children's Home programmes, children's home education, child health and wellbeing, child safeguarding, life skills for children, Christian children's home, sponsor a child UK">
+          content="children's home programmes London, child education charity UK, child safeguarding policy, life skills for children in care, child sponsorship UK, Christian values children, children's charity health and wellbeing">
 
-    <meta name="author"
-          content="Christ Promise Children's Home">
+    <meta name="author" content="Christ Promise Children's Home">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="googlebot" content="index, follow">
+    <meta name="theme-color" content="#102a43">
+    <meta name="format-detection" content="telephone=no">
 
-    <meta name="robots"
-          content="index, follow">
+    <link rel="canonical" href="https://christpromisehome.com/programmes/">
 
-    <meta name="theme-color"
-          content="#102a43">
-
-    <meta property="og:type"
-          content="website">
-
-    <meta property="og:title"
-          content="Our Programmes | Christ Promise Children's Home">
-
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Christ Promise Children's Home">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:url" content="https://christpromisehome.com/programmes/">
+    <meta property="og:title" content="Our Programmes | Christ Promise Children's Home">
     <meta property="og:description"
           content="Education, health, life skills, recreation, safeguarding and Christian values - six programmes that shape daily life at Christ Promise Children's Home.">
+    <meta property="og:image" content="https://christpromisehome.com{% static 'website/img/children.JPG' %}">
+    <meta property="og:image:alt" content="Children taking part in programmes at Christ Promise Children's Home">
 
-    <meta property="og:image"
-          content="{% static 'website/img/children.JPG' %}">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Our Programmes | Christ Promise Children's Home">
+    <meta name="twitter:description"
+          content="Education, health, life skills, recreation, safeguarding and Christian values - six programmes that shape daily life at the Home.">
+    <meta name="twitter:image" content="https://christpromisehome.com{% static 'website/img/children.JPG' %}">
 
-    <link href="{% static 'website/img/favicon.ico' %}"
-          rel="icon">
+    <!-- Favicons / site icons -->
+    <link rel="icon" href="{% static 'website/img/favicon.ico' %}" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'website/img/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'website/img/favicon-16x16.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'website/img/apple-touch-icon.png' %}">
+    <link rel="manifest" href="{% static 'website/site.webmanifest' %}">
 
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap"
           rel="stylesheet">
@@ -60,7 +69,20 @@
 
     <link href="{% static 'website/css/style.css' %}"
           rel="stylesheet">
+<link rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="{% static 'website/img/favicon-96x96.png' %}">
 
+<link rel="apple-touch-icon"
+      sizes="180x180"
+      href="{% static 'website/img/apple-touch-icon.png' %}">
+
+<link rel="manifest"
+      href="{% static 'website/site.webmanifest' %}">
+
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap"
+      rel="stylesheet">
     <style>
 
         :root {
@@ -1035,15 +1057,36 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://christpromisehome.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Our Programmes",
+                "item": "https://christpromisehome.com/programmes/"
+            }
+        ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
         "@type": "ItemList",
         "name": "Programmes at Christ Promise Children's Home",
         "itemListElement": [
-            {"@type": "ListItem", "position": 1, "name": "Education & Development", "url": "{% url 'programmes' %}#education"},
-            {"@type": "ListItem", "position": 2, "name": "Health & Wellbeing", "url": "{% url 'programmes' %}#health"},
-            {"@type": "ListItem", "position": 3, "name": "Life Skills", "url": "{% url 'programmes' %}#life-skills"},
-            {"@type": "ListItem", "position": 4, "name": "Recreation & Activities", "url": "{% url 'programmes' %}#recreation"},
-            {"@type": "ListItem", "position": 5, "name": "Child Safeguarding", "url": "{% url 'programmes' %}#safeguarding"},
-            {"@type": "ListItem", "position": 6, "name": "Christian Values", "url": "{% url 'programmes' %}#christian-values"}
+            {"@type": "ListItem", "position": 1, "name": "Education & Development", "url": "https://christpromisehome.com{% url 'programmes' %}#education"},
+            {"@type": "ListItem", "position": 2, "name": "Health & Wellbeing", "url": "https://christpromisehome.com{% url 'programmes' %}#health"},
+            {"@type": "ListItem", "position": 3, "name": "Life Skills", "url": "https://christpromisehome.com{% url 'programmes' %}#life-skills"},
+            {"@type": "ListItem", "position": 4, "name": "Recreation & Activities", "url": "https://christpromisehome.com{% url 'programmes' %}#recreation"},
+            {"@type": "ListItem", "position": 5, "name": "Child Safeguarding", "url": "https://christpromisehome.com{% url 'programmes' %}#safeguarding"},
+            {"@type": "ListItem", "position": 6, "name": "Christian Values", "url": "https://christpromisehome.com{% url 'programmes' %}#christian-values"}
         ]
     }
     </script>
@@ -1119,7 +1162,7 @@
    aria-label="Christ Promise Children's Home home">
 
     <img src="{% static 'website/img/PHOTO-2026-09-03-12-55-43.png' %}"
-         alt="Christ Promise Children's Home"
+         alt="Christ Promise Children's Home logo"
          class="site-logo">
 
     <span class="brand-mobile-text">
@@ -1194,7 +1237,7 @@
         </p>
 
         <h1>
-            Our Programmes
+            Our Programmes: Education, Health &amp; Safeguarding for Children in Our Care
         </h1>
 
     </div>
@@ -1582,7 +1625,7 @@
                 <span class="fact-chip">All staff background-checked and safeguarding trained</span>
 
                 <div>
-                    <a href="transparency.html" class="programme-link">
+                    <a href="{% url 'safeguarding' %}" class="programme-link">
                         Read our safeguarding policy &rarr;
                     </a>
                 </div>
@@ -1679,8 +1722,8 @@
                     partnerships and one-off donations. Supporters can choose to
                     give towards a specific programme, such as a child's school
                     fees or a term's outings, rather than a general fund. See our
-                    <a href="transparency.html">transparency and accountability</a>
-                    page for how funds are recorded and reported.
+                    <a href="{% url 'about' %}">About Us</a>
+                    page for how the Home is run and funded.
                 </p>
             </div>
 
@@ -1728,7 +1771,7 @@
                     own, you can raise it through our
                     <a href="{% url 'contact' %}">contact page</a> or read the
                     full policy on our
-                    <a href="safeguarding.html">child safeguarding</a> page.
+                    <a href="{% url 'safeguarding' %}">child safeguarding</a> page.
                 </p>
             </div>
 
@@ -1984,9 +2027,9 @@
      JAVASCRIPT
 ============================================================ -->
 
-<script src='https://code.jquery.com/jquery-3.4.1.min.js'"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
-<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js'></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
 
 <script src="{% static 'website/lib/easing/easing.min.js' %}"></script>
 

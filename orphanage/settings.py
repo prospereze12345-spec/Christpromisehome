@@ -52,7 +52,19 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "website",
+    "django.contrib.sites",       # required by django.contrib.sitemaps
+    "django.contrib.sitemaps",
 ]
+SITE_ID = 1
+
+
+
+# in production settings
+SEO_ENVIRONMENT = "production"
+
+# in staging/dev settings
+SEO_ENVIRONMENT = "staging"
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
