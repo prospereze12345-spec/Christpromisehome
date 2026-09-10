@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from website.views import smtp_test
+
 urlpatterns = [
     path("", views.home, name="home"),
     path("about/", views.about, name="about"),
@@ -25,6 +25,5 @@ path(
     views.send_donation_enquiry,
     name="send_donation_enquiry",
 ),
-path("smtp-test/", smtp_test, name="smtp_test"),
 ]
 

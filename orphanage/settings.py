@@ -138,6 +138,9 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # ============================================================
 # EMAIL CONFIGURATION
 # ============================================================
+# ============================================================
+# EMAIL CONFIGURATION — BREVO API
+# ============================================================
 
 CONTACT_EMAIL = os.getenv(
     "CONTACT_EMAIL",
@@ -149,43 +152,27 @@ DEFAULT_FROM_EMAIL = os.getenv(
     "contact@christpromisehome.com"
 )
 
-EMAIL_BACKEND = os.getenv(
-    "EMAIL_BACKEND",
-    "django.core.mail.backends.smtp.EmailBackend"
-)
-
-# Truehost Workplace SMTP
-EMAIL_HOST = os.getenv(
-    "EMAIL_HOST",
-    "workplace.truehost.cloud"
-)
-
-EMAIL_PORT = int(os.getenv(
-    "EMAIL_PORT",
-    "587"
-))
-
-# Port 587 uses STARTTLS
-EMAIL_USE_TLS = os.getenv(
-    "EMAIL_USE_TLS",
-    "True"
-).lower() == "true"
-
-# Port 587 must NOT use implicit SSL
-EMAIL_USE_SSL = os.getenv(
-    "EMAIL_USE_SSL",
-    "False"
-).lower() == "true"
-
-EMAIL_HOST_USER = os.getenv(
-    "EMAIL_HOST_USER",
-    "contact@christpromisehome.com"
-)
-
-EMAIL_HOST_PASSWORD = os.getenv(
-    "EMAIL_HOST_PASSWORD",
+# Brevo HTTP API
+BREVO_API_KEY = os.getenv(
+    "BREVO_API_KEY",
     ""
 )
 
-# Prevent the Render worker from hanging indefinitely
-EMAIL_TIMEOUT = 10
+BREVO_API_URL = os.getenv(
+    "BREVO_API_URL",
+    "https://api.brevo.com/v3/smtp/email"
+)
+
+# Verified Brevo sender
+BREVO_SENDER_EMAIL = os.getenv(
+    "BREVO_SENDER_EMAIL",
+    "contact@christpromisehome.com"
+)
+
+BREVO_SENDER_NAME = os.getenv(
+    "BREVO_SENDER_NAME",
+    "Christ Promise Children's Home"
+)
+
+# API request timeout
+BREVO_TIMEOUT = 15

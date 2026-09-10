@@ -36,19 +36,12 @@ def terms_and_condition(request):
 
 
 
-
-
-from django.conf import settings
-from django.core.exceptions import ValidationError
-from django.core.mail import send_mail
-from django.core.validators import validate_email
-from django.http import JsonResponse
-from django.views.decorators.http import require_POST
 import logging
 
+import requests
+
 from django.conf import settings
 from django.core.exceptions import ValidationError
-from django.core.mail import send_mail
 from django.core.validators import validate_email
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
@@ -57,12 +50,159 @@ from django.views.decorators.http import require_POST
 logger = logging.getLogger(__name__)
 
 
+# ============================================================
+# BREVO EMAIL HELPER
+# ============================================================
+
+def send_brevo_email(
+    *,
+    recipient_email,
+    reply_to_email,
+    subject,
+    text_content,
+):
+    """
+    Send a transactional email through the Brevo HTTP API.
+
+    Brevo sends the email using the verified
+    contact@christpromisehome.com sender.
+
+    Replies go directly to the website visitor through
+    the Reply-To address.
+    """
+
+    api_key = getattr(settings, "BREVO_API_KEY", "").strip()
+    api_url = getattr(
+        settings,
+        "BREVO_API_URL",
+        "https://api.brevo.com/v3/smtp/email",
+    )
+
+    sender_email = getattr(
+        settings,
+        "BREVO_SENDER_EMAIL",
+        "contact@christpromisehome.com",
+    )
+
+    sender_name = getattr(
+        settings,
+        "BREVO_SENDER_NAME",
+        "Christ Promise Children's Home",
+    )
+
+    timeout = getattr(settings, "BREVO_TIMEOUT", 15)
+
+    # --------------------------------------------------------
+    # Configuration validation
+    # --------------------------------------------------------
+
+    if not api_key:
+        raise RuntimeError(
+            "BREVO_API_KEY is not configured."
+        )
+
+    if not recipient_email:
+        raise RuntimeError(
+            "Brevo recipient email is missing."
+        )
+
+    if not sender_email:
+        raise RuntimeError(
+            "Brevo sender email is missing."
+        )
+
+    # --------------------------------------------------------
+    # Brevo API request
+    # --------------------------------------------------------
+
+    payload = {
+        "sender": {
+            "name": sender_name,
+            "email": sender_email,
+        },
+        "to": [
+            {
+                "email": recipient_email,
+            }
+        ],
+        "replyTo": {
+            "email": reply_to_email,
+        },
+        "subject": subject,
+        "textContent": text_content,
+    }
+
+    headers = {
+        "accept": "application/json",
+        "api-key": api_key,
+        "content-type": "application/json",
+    }
+
+    try:
+        response = requests.post(
+            api_url,
+            json=payload,
+            headers=headers,
+            timeout=timeout,
+        )
+
+    except requests.Timeout as exc:
+        logger.exception(
+            "Brevo API request timed out."
+        )
+        raise RuntimeError(
+            "Brevo API request timed out."
+        ) from exc
+
+    except requests.RequestException as exc:
+        logger.exception(
+            "Brevo API request failed."
+        )
+        raise RuntimeError(
+            "Unable to connect to the Brevo API."
+        ) from exc
+
+    # --------------------------------------------------------
+    # Handle Brevo response
+    # --------------------------------------------------------
+
+    if not response.ok:
+        # Log status and response body for server diagnostics.
+        # NEVER log the API key.
+        logger.error(
+            "Brevo API returned HTTP %s: %s",
+            response.status_code,
+            response.text[:1000],
+        )
+
+        raise RuntimeError(
+            f"Brevo API returned HTTP {response.status_code}."
+        )
+
+    # Brevo normally returns JSON containing messageId.
+    try:
+        response_data = response.json()
+    except ValueError:
+        response_data = {}
+
+    logger.info(
+        "Brevo email sent successfully. Message ID: %s",
+        response_data.get("messageId", "unknown"),
+    )
+
+    return response_data
+
+
+# ============================================================
+# CONTACT FORM
+# ============================================================
+
 @require_POST
 def send_contact_message(request):
 
-    # -----------------------------------------
+    # --------------------------------------------------------
     # Get submitted form data
-    # -----------------------------------------
+    # --------------------------------------------------------
 
     name = request.POST.get("name", "").strip()
     email = request.POST.get("email", "").strip()
@@ -71,9 +211,9 @@ def send_contact_message(request):
     consent = request.POST.get("consent")
 
 
-    # -----------------------------------------
+    # --------------------------------------------------------
     # Validate required fields
-    # -----------------------------------------
+    # --------------------------------------------------------
 
     if not name:
         return JsonResponse({
@@ -100,9 +240,9 @@ def send_contact_message(request):
         }, status=400)
 
 
-    # -----------------------------------------
+    # --------------------------------------------------------
     # Privacy consent
-    # -----------------------------------------
+    # --------------------------------------------------------
 
     if consent != "true":
         return JsonResponse({
@@ -114,12 +254,13 @@ def send_contact_message(request):
         }, status=400)
 
 
-    # -----------------------------------------
+    # --------------------------------------------------------
     # Validate visitor email
-    # -----------------------------------------
+    # --------------------------------------------------------
 
     try:
         validate_email(email)
+
     except ValidationError:
         return JsonResponse({
             "success": False,
@@ -127,9 +268,9 @@ def send_contact_message(request):
         }, status=400)
 
 
-    # -----------------------------------------
+    # --------------------------------------------------------
     # Validate input lengths
-    # -----------------------------------------
+    # --------------------------------------------------------
 
     if len(name) > 100:
         return JsonResponse({
@@ -153,18 +294,18 @@ def send_contact_message(request):
         }, status=400)
 
 
-    # -----------------------------------------
+    # --------------------------------------------------------
     # Normalize subject
-    # -----------------------------------------
+    # --------------------------------------------------------
 
     subject = " ".join(subject.split())
 
-
-    # -----------------------------------------
-    # Prepare notification email
-    # -----------------------------------------
-
     email_subject = f"Website Contact: {subject}"
+
+
+    # --------------------------------------------------------
+    # Prepare email body
+    # --------------------------------------------------------
 
     email_body = f"""\
 New message received from the
@@ -199,24 +340,23 @@ https://christpromisehome.com
 """
 
 
-    # -----------------------------------------
-    # Send email
-    # -----------------------------------------
+    # --------------------------------------------------------
+    # Send through Brevo
+    # --------------------------------------------------------
 
     try:
 
-        send_mail(
+        send_brevo_email(
+            recipient_email=settings.CONTACT_EMAIL,
+            reply_to_email=email,
             subject=email_subject,
-            message=email_body,
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=[settings.CONTACT_EMAIL],
-            fail_silently=False,
+            text_content=email_body,
         )
 
     except Exception:
         logger.exception(
             "Failed to send Christ Promise Children's Home "
-            "contact form email."
+            "contact form email through Brevo."
         )
 
         return JsonResponse({
@@ -228,9 +368,9 @@ https://christpromisehome.com
         }, status=500)
 
 
-    # -----------------------------------------
+    # --------------------------------------------------------
     # Success
-    # -----------------------------------------
+    # --------------------------------------------------------
 
     return JsonResponse({
         "success": True,
@@ -239,12 +379,18 @@ https://christpromisehome.com
             "We will get back to you within a few hours."
         )
     }, status=200)
+
+
+# ============================================================
+# DONATION ENQUIRY FORM
+# ============================================================
+
 @require_POST
 def send_donation_enquiry(request):
 
-    # -----------------------------------------
+    # --------------------------------------------------------
     # Get submitted form data
-    # -----------------------------------------
+    # --------------------------------------------------------
 
     email = request.POST.get("email", "").strip()
     phone = request.POST.get("phone", "").strip()
@@ -252,9 +398,9 @@ def send_donation_enquiry(request):
     consent = request.POST.get("consent")
 
 
-    # -----------------------------------------
+    # --------------------------------------------------------
     # Validate required fields
-    # -----------------------------------------
+    # --------------------------------------------------------
 
     if not email:
         return JsonResponse({
@@ -269,9 +415,9 @@ def send_donation_enquiry(request):
         }, status=400)
 
 
-    # -----------------------------------------
+    # --------------------------------------------------------
     # Privacy consent
-    # -----------------------------------------
+    # --------------------------------------------------------
 
     if consent != "true":
         return JsonResponse({
@@ -283,12 +429,13 @@ def send_donation_enquiry(request):
         }, status=400)
 
 
-    # -----------------------------------------
+    # --------------------------------------------------------
     # Validate visitor email
-    # -----------------------------------------
+    # --------------------------------------------------------
 
     try:
         validate_email(email)
+
     except ValidationError:
         return JsonResponse({
             "success": False,
@@ -296,9 +443,9 @@ def send_donation_enquiry(request):
         }, status=400)
 
 
-    # -----------------------------------------
+    # --------------------------------------------------------
     # Validate input lengths
-    # -----------------------------------------
+    # --------------------------------------------------------
 
     if len(phone) > 30:
         return JsonResponse({
@@ -316,9 +463,9 @@ def send_donation_enquiry(request):
         }, status=400)
 
 
-    # -----------------------------------------
-    # Prepare notification email
-    # -----------------------------------------
+    # --------------------------------------------------------
+    # Prepare email
+    # --------------------------------------------------------
 
     email_subject = "Website Donation Enquiry"
 
@@ -352,24 +499,23 @@ https://christpromisehome.com
 """
 
 
-    # -----------------------------------------
-    # Send email
-    # -----------------------------------------
+    # --------------------------------------------------------
+    # Send through Brevo
+    # --------------------------------------------------------
 
     try:
 
-        send_mail(
+        send_brevo_email(
+            recipient_email=settings.CONTACT_EMAIL,
+            reply_to_email=email,
             subject=email_subject,
-            message=email_body,
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=[settings.CONTACT_EMAIL],
-            fail_silently=False,
+            text_content=email_body,
         )
 
     except Exception:
         logger.exception(
             "Failed to send Christ Promise Children's Home "
-            "donation enquiry email."
+            "donation enquiry email through Brevo."
         )
 
         return JsonResponse({
@@ -381,9 +527,9 @@ https://christpromisehome.com
         }, status=500)
 
 
-    # -----------------------------------------
+    # --------------------------------------------------------
     # Success
-    # -----------------------------------------
+    # --------------------------------------------------------
 
     return JsonResponse({
         "success": True,
@@ -392,41 +538,3 @@ https://christpromisehome.com
             "We will get back to you within a few hours."
         )
     }, status=200)
-
-
-
-
-
-import socket
-
-from django.conf import settings
-from django.http import JsonResponse
-from django.views.decorators.http import require_GET
-
-
-@require_GET
-def smtp_test(request):
-    try:
-        host = settings.EMAIL_HOST
-        port = settings.EMAIL_PORT
-
-        socket.setdefaulttimeout(10)
-
-        sock = socket.create_connection((host, port), timeout=10)
-        sock.close()
-
-        return JsonResponse({
-            "success": True,
-            "message": f"Render can connect to {host}:{port}"
-        })
-
-    except Exception as e:
-        logger.exception("SMTP connectivity test failed.")
-
-        return JsonResponse({
-            "success": False,
-            "host": settings.EMAIL_HOST,
-            "port": settings.EMAIL_PORT,
-            "error": type(e).__name__,
-            "message": str(e),
-        }, status=500)

@@ -910,157 +910,127 @@
 
         </div>
 
+<div class="contact-form">
 
-        <div class="contact-img">
+    <!-- AJAX success/error messages appear here -->
+    <div id="success" aria-live="polite"></div>
 
-            <img src="{% static 'website/img/contact.jpg' %}"
-                 alt="Contact Christ Promise Children's Home"
-                 loading="lazy"
-                 decoding="async">
+    <form name="sentMessage"
+          id="contactForm"
+          method="POST"
+          novalidate>
+
+        {% csrf_token %}
+
+        <!-- NAME -->
+        <div class="control-group">
+            <label for="name" class="sr-only">
+                Your Name
+            </label>
+
+            <input type="text"
+                   class="form-control"
+                   id="name"
+                   name="name"
+                   placeholder="Your Name"
+                   maxlength="100"
+                   autocomplete="name"
+                   required>
+        </div>
+
+        <!-- EMAIL -->
+        <div class="control-group">
+            <label for="email" class="sr-only">
+                Your Email
+            </label>
+
+            <input type="email"
+                   class="form-control"
+                   id="email"
+                   name="email"
+                   placeholder="Your Email"
+                   maxlength="254"
+                   autocomplete="email"
+                   required>
+        </div>
+
+        <!-- SUBJECT -->
+        <div class="control-group">
+            <label for="subject" class="sr-only">
+                Subject
+            </label>
+
+            <input type="text"
+                   class="form-control"
+                   id="subject"
+                   name="subject"
+                   placeholder="Subject"
+                   maxlength="200"
+                   required>
+        </div>
+
+        <!-- MESSAGE -->
+        <div class="control-group">
+            <label for="message" class="sr-only">
+                Message
+            </label>
+
+            <textarea class="form-control"
+                      id="message"
+                      name="message"
+                      placeholder="Message"
+                      maxlength="5000"
+                      required></textarea>
+        </div>
+
+        <!-- PRIVACY CONSENT -->
+        <div class="consent-group">
+
+            <input type="checkbox"
+                   id="contactConsent"
+                   name="consent"
+                   value="true"
+                   required>
+
+            <label for="contactConsent">
+                I agree to the
+                <a href="{% url 'privacy_policy' %}"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    Privacy Policy
+                </a>
+                and consent to my information being used to respond
+                to this enquiry.
+            </label>
 
         </div>
 
-
-        <div class="contact-form">
-
-            <!-- AJAX success/error messages appear here -->
-            <div id="success"
-                 aria-live="polite"></div>
-
-
-            <!-- ====================================================
-                 IMPORTANT:
-                 CSRF TOKEN MUST BE INSIDE THIS FORM.
-            ===================================================== -->
-
-            <form name="sentMessage"
-                  id="contactForm"
-                  method="POST"
-                  novalidate>
-
-                {% csrf_token %}
-
-
-                <!-- NAME -->
-
-                <div class="control-group">
-
-                    <label for="name" class="sr-only">
-                        Your Name
-                    </label>
-
-                    <input type="text"
-                           class="form-control"
-                           id="name"
-                           name="name"
-                           placeholder="Your Name"
-                           maxlength="100"
-                           autocomplete="name"
-                           required>
-
-                </div>
-
-
-                <!-- EMAIL -->
-
-                <div class="control-group">
-
-                    <label for="email" class="sr-only">
-                        Your Email
-                    </label>
-
-                    <input type="email"
-                           class="form-control"
-                           id="email"
-                           name="email"
-                           placeholder="Your Email"
-                           maxlength="254"
-                           autocomplete="email"
-                           required>
-
-                </div>
-
-
-                <!-- SUBJECT -->
-
-                <div class="control-group">
-
-                    <label for="subject" class="sr-only">
-                        Subject
-                    </label>
-
-                    <input type="text"
-                           class="form-control"
-                           id="subject"
-                           name="subject"
-                           placeholder="Subject"
-                           maxlength="200"
-                           required>
-
-                </div>
-
-
-                <!-- MESSAGE -->
-
-                <div class="control-group">
-
-                    <label for="message" class="sr-only">
-                        Message
-                    </label>
-
-                    <textarea class="form-control"
-                              id="message"
-                              name="message"
-                              placeholder="Message"
-                              maxlength="5000"
-                              required></textarea>
-
-                </div>
-
-
-                <!-- PRIVACY CONSENT -->
-
-                <div class="consent-group">
-
-                    <input type="checkbox"
-                           id="contactConsent"
-                           name="consent"
-                           value="true"
-                           required>
-
-                    <label for="contactConsent">
-
-                        I agree to the
-                        <a href="{% url 'privacy_policy' %}"
-                           target="_blank"
-                           rel="noopener noreferrer">
-                            Privacy Policy
-                        </a>
-                        and consent to my information being used to respond
-                        to this enquiry.
-
-                    </label>
-
-                </div>
-
-
-                <!-- SUBMIT -->
-
-                <div>
-
-                    <button class="btn btn-cta-inverse"
-                            type="submit"
-                            id="sendMessageButton">
-
-                        Send Message
-
-                    </button>
-
-                </div>
-
-            </form>
-
+        <!-- SUBMIT -->
+        <div>
+            <button class="btn btn-cta-inverse"
+                    type="submit"
+                    id="sendMessageButton">
+                Send Message
+            </button>
         </div>
+
+    </form>
+
+</div>
+
+
+<!-- ============================================================
+     CONTACT IMAGE — BELOW THE FORM
+============================================================ -->
+
+<div class="contact-img">
+
+    <img src="{% static 'website/img/contact.jpg' %}"
+         alt="Contact Christ Promise Children's Home"
+         loading="lazy"
+         decoding="async">
+
+</div>
 
     </div>
 
