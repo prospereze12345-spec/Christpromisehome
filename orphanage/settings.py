@@ -158,7 +158,7 @@ EMAIL_BACKEND = os.getenv(
 
 EMAIL_HOST = os.getenv(
     "EMAIL_HOST",
-    "workplace.truehost.cloud"
+    "sm1.cloudoon.com"
 )
 
 EMAIL_PORT = int(os.getenv(
