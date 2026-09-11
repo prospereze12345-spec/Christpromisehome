@@ -58,6 +58,7 @@ INSTALLED_APPS = [
 SITE_ID = 1
 
 SEO_ENVIRONMENT = "production"
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
