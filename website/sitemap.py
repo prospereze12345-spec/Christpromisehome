@@ -1,21 +1,6 @@
-"""
-sitemaps.py
------------
-Sitemap classes for Christ Promise Children's Home (christpromisehome.com).
+from types import SimpleNamespace
 
-Drop this file into your `website` app (same folder as views.py / urls.py).
-
-Django's sitemap framework needs `django.contrib.sitemaps` in INSTALLED_APPS
-and the "sites" framework enabled. See the bottom of this file / the
-accompanying urls.py notes for the settings.py changes required.
-
-Why a dict-based config instead of one class per page:
-    Every page here is a flat, static template driven by a named URL
-    (no model instances), so a single class that iterates over a list of
-    (url_name, changefreq, priority) tuples is far easier to maintain than
-    one Sitemap subclass per page. When you add a new page, you add one
-    line here — nothing else.
-"""
+from django.conf import settings
 from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
 
@@ -24,6 +9,10 @@ class StaticViewSitemap(Sitemap):
     """
     Sitemap for the public static pages of
     Christ Promise Children's Home.
+
+    The sitemap domain is taken from SEO_SITE_DOMAIN rather than
+    django.contrib.sites, so an incorrect django_site database record
+    cannot produce example.com URLs.
     """
 
     protocol = "https"
@@ -55,16 +44,25 @@ class StaticViewSitemap(Sitemap):
         _, _, priority = item
         return priority
 
-    # No lastmod is set on purpose: these are hand-edited templates with no
-    # "date last changed" tracked anywhere. If you later move page copy into
-    # the database (e.g. a FlatPage or a CMS model with `updated_at`), add:
-    #
-    #   def lastmod(self, item):
-    #       return item.updated_at
-    #
-    # Google is fine with sitemaps that omit lastmod; it just won't use
-    # freshness as a crawl-priority signal for these URLs.
+    def get_urls(self, page=1, site=None, protocol=None):
+        """
+        Ignore django_site completely.
 
+        Always use our explicitly configured production domain.
+        """
 
-# Registered in urls.py as:
-#   sitemaps = {"static": StaticViewSitemap}
+        domain = getattr(
+            settings,
+            "SEO_SITE_DOMAIN",
+            "christpromisehome.com",
+        )
+
+        fixed_site = SimpleNamespace(
+            domain=domain
+        )
+
+        return super().get_urls(
+            page=page,
+            site=fixed_site,
+            protocol="https",
+        )

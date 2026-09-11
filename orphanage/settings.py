@@ -54,11 +54,11 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "django.contrib.sitemaps",
 ]
-
 SITE_ID = 1
 
 SEO_ENVIRONMENT = "production"
 
+SEO_SITE_DOMAIN = "christpromisehome.com"
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
